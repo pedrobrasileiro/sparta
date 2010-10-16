@@ -105,6 +105,7 @@ $(function() {
   $('ul.tickets-list').sortable(sortableOptions).disableSelection();
 
   $('ul.tickets-list').selectable({
+    filter: 'li.ticket',
     selected: function(event, ui) {
       var selected = $('.ticket.ui-selected');
       if (selected.length > 1) {
@@ -114,8 +115,15 @@ $(function() {
           $('.columns .column.meta-column').html(html);
         });
       }
-    }    
+    }
   });
 
   $('.drag-mate a').live('click', function() { return false; });
+
+
+  $('a.add-ticket').bind('ajax:success', function(_, data) {
+    $('.tickets-list.inbox').prepend(
+      data
+    );
+  });
 });
