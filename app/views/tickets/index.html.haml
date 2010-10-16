@@ -5,7 +5,7 @@
     %li.ticket
       %span.drag-mate= link_to image_tag('drag.gif'), '#'
       %span.number-container
-        %span.number ##{ticket.number}
+        %span.number= link_to "##{ticket.number}", [@project, ticket]
       %span.description= ticket.description
 
 %ul#ui-sorting-helper.tickets-list

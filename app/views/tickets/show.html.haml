@@ -1,7 +1,17 @@
 %p#notice= notice
 %p
+  %b Number
+  = @ticket.number
+%p
   %b Desc:
   = @ticket.description
 = link_to 'Edit', edit_project_ticket_path(@project, @ticket)
-|
-\#{link_to 'Back', project_tickets_path}
+
+%ul.comments
+  - @comments.each do |comment|
+    %li
+      %p= comment.body
+
+- semantic_form_for [@project, @ticket, @comment]  do |f|
+  = f.inputs :body
+  = f.buttons

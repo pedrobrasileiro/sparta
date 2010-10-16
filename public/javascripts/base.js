@@ -101,7 +101,9 @@ $(function() {
       if (selected.length > 1) {
         $('.columns .column.meta-column').html('Goo');
       } else if (selected.length === 1) {
-        $('.columns .column.meta-column').html('Ticket');
+        $.get($('span.number a', selected).attr('href'), function(html){
+          $('.columns .column.meta-column').html(html);
+        });
       }
     }    
   });
