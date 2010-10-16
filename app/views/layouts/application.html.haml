@@ -8,7 +8,7 @@
     = javascript_include_tag 'jquery-1.4.3rc2.min', 'jquery.timeago', 'base'
     = csrf_meta_tag
 
-  %body
+  %body(id="#{body_id}")
     #root
       #logo= link_to 'Sparta', root_path
 
