@@ -197,3 +197,25 @@ li.ticket
   .video
     float: right
     margin-right: -530px
+
+// Button
+
+.button
+  @include border-radius(4px)
+  @include text-shadow(-1px, 1px, 0, #E3E3E3)
+  padding: 5px 10px
+  background: red
+  font-size: 13px
+  text-decoration: none
+  background: #BABABA
+  color: #171717
+  display: inline-block
+
+  &.green
+    background: #B6E15B
+    color: #546C04
+    &:hover
+      background: #D3E77F
+
+  .shortcut
+    color: #5E5E5E

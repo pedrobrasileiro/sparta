@@ -1,4 +1,4 @@
-= link_to "Add an new ticket (⌘+⌥+N)", new_project_ticket_path
+= link_to 'Add an new ticket <span class="shortcut">(⌘+⌥+N)</span>'.html_safe, new_project_ticket_path, :class => 'button green'
 
 %ul.tickets-list
   - @tickets.each do |ticket|
