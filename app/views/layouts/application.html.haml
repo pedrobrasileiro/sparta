@@ -3,13 +3,14 @@
 
   %head
     %title Sparta
+    %link(rel="shortcut icon" href="/images/favicon.png" type="image/png")
     = stylesheet_link_tag 'master'
     = javascript_include_tag 'jquery-1.4.3rc2.min', 'jquery.timeago', 'base'
     = csrf_meta_tag
 
   %body
     #root
-      #logo= link_to image_tag('logo_ribbon.png'), root_path
+      #logo= link_to 'Sparta', root_path
 
       - if notice
         .notice
