@@ -4,7 +4,7 @@
 @import "compass/layout/sticky-footer"
 
 body
-  font-family: Helvetica Neue, Helvetica, Arial
+  font-family: Helvetica, Arial
   background: #221F1D
 
 // Header
@@ -24,11 +24,18 @@ body
   height: 190px
   padding: 25px 0 0 105px
   font-size: 38px
-  font-weight: 100
   letter-spacing: 2px
   a
     text-decoration: none
     color: #6A142E
+    &.ribbon
+      position: absolute
+      top: 0
+      left: 0
+      width: 88px
+      height: 172px
+      display: block
+
 
 body#page #header
   height: 100px
@@ -40,15 +47,26 @@ body#ui #logo
   background-position: 0px -85px
   font-size: 25px
   height: 65px
+  a.ribbon
+    height: 85px
 
 // Navigation
 
 #navigation
+  a
+    @include text-shadow(white, -1px, 1px, 0)
+    color: #262626
+
+body#page #navigation
+  margin: 35px 0 0 350px
+
+body#ui #navigation
+  margin: 15px 0 0 140px
 
 
 // Footer
 
-@include sticky-footer(36px, "#root", "#root-footer", "#footer")
+@include sticky-footer(38px, "#root", "#root-footer", "#footer")
 
 #footer
   background: #EDEDED
@@ -73,9 +91,8 @@ a.made-with-love
     color: #101010
     font-size: 10px
     font-weight: 100
-    letter-spacing: 1px
     vertical-align: super
-    margin-left: 8px
+    margin-left: 5px
 
 // Content
 

@@ -11,7 +11,10 @@
   %body(id="#{body_id}")
     #root
       #header
-        #logo= link_to 'Sparta', root_path
+        #logo
+          = link_to '', root_path, :class => 'ribbon'
+          - if body_id == 'page'
+            = link_to image_tag('sparta.png'), root_path
 
         #navigation= render "layouts/navigation_#{body_id}"
 
