@@ -2,8 +2,8 @@ class ProjectsController < InheritedResources::Base
   actions :index, :new, :create, :edit, :update, :destroy
   
   def create
-    create!
-    current_user.projects << @project
+    create! {project_tickets_path(@project)}
+    current_user.projects << @project    
   end
   
   private
