@@ -1,8 +1,11 @@
 Sparta::Application.routes.draw do
 
-  resources :projects do
+  resources :projects, :except => [:show] do
     resources :tickets
   end
+  
+  # match "/stories/:name" => redirect {|params| "/posts/#{params[:name].pluralize}" } 
+  match '/projects/:id' => redirect("/projects/%{id}/tickets")
 
   devise_for :users
 

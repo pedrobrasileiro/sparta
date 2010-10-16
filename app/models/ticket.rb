@@ -1,6 +1,5 @@
 class Ticket < ActiveRecord::Base
   belongs_to :project
-  
   before_create :numbering_ticket
 
   private

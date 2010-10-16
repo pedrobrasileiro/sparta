@@ -31,6 +31,7 @@ GEM
     activesupport (3.0.1)
     arel (1.0.1)
       activesupport (~> 3.0.0)
+    babosa (0.2.0)
     bcrypt-ruby (2.1.2)
     builder (2.1.2)
     cancan (1.3.2)
@@ -45,6 +46,8 @@ GEM
       actionpack (>= 2.3.0)
       activesupport (>= 2.3.0)
       i18n (>= 0.4.0)
+    friendly_id (3.1.7)
+      babosa (~> 0.2.0)
     gravtastic (2.2.0)
     haml (3.0.21)
     has_scope (0.5.0)
@@ -99,6 +102,7 @@ DEPENDENCIES
   compass
   devise
   formtastic
+  friendly_id (= 3.1.7)
   gravtastic
   haml
   inherited_resources (= 1.1.2)
