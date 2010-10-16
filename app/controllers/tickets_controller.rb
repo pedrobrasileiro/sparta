@@ -12,4 +12,9 @@ class TicketsController < InheritedResources::Base
       end
     end
   end
+
+  def sort
+    Ticket.order params[:ticket]
+    render :nothing => true
+  end
 end

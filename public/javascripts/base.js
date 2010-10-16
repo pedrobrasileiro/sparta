@@ -99,6 +99,18 @@ $(function() {
         $(sortingHelper).css({
           top: (ui.item.offset().top + 26) + 'px'
         });
+    },
+
+    update: function(event, ui) {
+      var ul = $(this);
+      setTimeout(function() {
+        $.post(
+          '/projects/1/tickets/sort',
+          ul.sortable('serialize'),
+          null,
+          'json'
+        );
+      }, 0);
     }
   };
 
