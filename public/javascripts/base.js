@@ -104,7 +104,16 @@ $(function() {
 
   $('ul.tickets-list').sortable(sortableOptions).disableSelection();
 
-  $('ul.tickets-list').selectable();
+  $('ul.tickets-list').selectable({
+    selected: function(event, ui) {
+      var selected = $('.ticket.ui-selected');
+      if (selected.length > 1) {
+        $('.columns .column.meta-column').html('Goo');
+      } else if (selected.length === 1) {
+        $('.columns .column.meta-column').html('Ticket');
+      }
+    }    
+  });
 
   $('.drag-mate a').live('click', function() { return false; });
 });

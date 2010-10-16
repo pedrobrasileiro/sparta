@@ -1,10 +1,7 @@
 %p#notice= notice
 %p
-  %b Name:
-  = @ticket.name
-%p
-  %b Body:
-  = @ticket.body
+  %b Desc:
+  = @ticket.description
 = link_to 'Edit', edit_project_ticket_path(@project, @ticket)
 |
 \#{link_to 'Back', project_tickets_path}
