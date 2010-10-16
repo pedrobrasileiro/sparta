@@ -13,6 +13,8 @@
       #header
         #logo= link_to 'Sparta', root_path
 
+        = render "layouts/navigation_#{body_id}"
+
         - if notice
           .notice
             %p= notice
