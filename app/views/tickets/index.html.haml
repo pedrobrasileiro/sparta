@@ -4,7 +4,7 @@
   - @tickets.each do |ticket|
     %li.ticket
       %span.drag-mate= link_to image_tag('drag.gif'), '#'
-      %span.number= ticket.number
+      %span.number ##{ticket.number}
       %span.description= ticket.description
 
 %ul#ui-sorting-helper.tickets-list
