@@ -1,4 +1,6 @@
 Sparta::Application.routes.draw do
+  resources :projects
+
   devise_for :users
 
   resources :common_pages, :only => :show
