@@ -7,6 +7,19 @@ gem 'rails', '3.0.1'
 
 gem 'pg'
 
+gem 'devise'
+gem 'cancan'
+
+gem 'thinking-sphinx', '2.0.0.rc2', :require => 'thinking_sphinx'
+
+gem 'inherited_resources', '1.1.2'
+
+gem 'haml'
+gem 'compass'
+gem 'formtastic'
+gem 'gravtastic'
+gem 'RedCloth', :require => 'redcloth'
+
 # Use unicorn as the web server
 # gem 'unicorn'
 
