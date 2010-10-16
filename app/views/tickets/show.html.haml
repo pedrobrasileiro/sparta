@@ -1,7 +1,10 @@
 %p#notice= notice
 %p
+  %b Number
+  = @ticket.number
+%p
   %b Desc:
   = @ticket.description
 = link_to 'Edit', edit_project_ticket_path(@project, @ticket)
-|
-\#{link_to 'Back', project_tickets_path}
+
+= render :partial => 'comments/list'

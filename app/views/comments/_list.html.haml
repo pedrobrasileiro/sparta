@@ -1,0 +1,7 @@
+#comments-box
+  %ul.comments
+    - @comments.each do |comment|
+      %li
+        %p= comment.body
+
+  = render :partial => 'comments/form'
