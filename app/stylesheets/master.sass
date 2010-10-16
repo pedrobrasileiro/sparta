@@ -1,6 +1,7 @@
-@import 'compass/reset'
+@import "compass/reset"
+@import "compass/css3"
 
-@import 'compass/layout/sticky-footer'
+@import "compass/layout/sticky-footer"
 
 body
   font-family: Helvetica Neue, Helvetica, Arial
@@ -13,9 +14,11 @@ body
   margin-top: 15px
   display: inline-block
   width: 100%
+  background: #FAFBEE
 
 #logo
   display: inline-block
+  position: absolute
   margin: -15px 0 0 30px
   background: url(/images/logo_ribbon.png) no-repeat
   height: 190px
@@ -36,6 +39,12 @@ body#ui #header
 body#ui #logo
   background-position: 0px -85px
   font-size: 25px
+  height: 65px
+
+// Navigation
+
+#navigation
+
 
 // Footer
 
@@ -67,3 +76,12 @@ a.made-with-love
     letter-spacing: 1px
     vertical-align: super
     margin-left: 8px
+
+// Content
+
+#content
+  @include border-radius(5px)
+  padding: 10px
+  background: white
+  margin: 30px 20px
+
