@@ -1,0 +1,42 @@
+!!!5
+%html
+
+  %head
+    %title Sparta
+    %link(rel="shortcut icon" href="/images/favicon.png" type="image/png")
+    = stylesheet_link_tag 'master'
+    = javascript_include_tag 'jquery-1.4.3rc2.min', 'jquery-ui-1.8.5.custom.min', 'jquery.timeago', 'base'
+    = csrf_meta_tag
+
+  %body(id="#{body_id}")
+    #root
+      #header
+        #logo
+          = link_to '', root_path, :class => 'ribbon'
+          - if body_id == 'page'
+            = link_to image_tag('sparta.png'), root_path
+
+        #navigation= render "layouts/navigation_#{body_id}"
+
+        - if notice
+          .notice
+            %p= notice
+            = link_to '×', '', :class => 'close'
+
+        - if alert
+          .alert
+            %p= alert
+            = link_to '×', '', :class => 'close'
+
+      #content
+        .content-wrapper
+          = yield :content
+
+      #root-footer
+
+    #footer
+      = link_to '<span class="love-panic">Made with Love</span><span class="since">Since 2010</span>'.html_safe, '#', :class => 'made-with-love'
+
+    - if RAILS_ENV == 'production'
+      = render 'layouts/google_analytics'
+
