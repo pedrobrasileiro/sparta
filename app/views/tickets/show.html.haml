@@ -7,9 +7,4 @@
   = @ticket.description
 = link_to 'Edit', edit_project_ticket_path(@project, @ticket)
 
-%ul.comments
-  - @comments.each do |comment|
-    %li
-      %p= comment.body
-
-= render :partial => 'comments/form'
+= render :partial => 'comments/list'
