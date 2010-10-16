@@ -3,7 +3,8 @@
 %ul.tickets-list
   - @tickets.each do |ticket|
     %li.ticket
+      %span.drag-mate #
       %span.number= ticket.number
       %span.description= ticket.description
 
-
+%ul#ui-sorting-helper.tickets-list
