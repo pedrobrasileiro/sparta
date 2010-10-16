@@ -87,7 +87,7 @@ $(function() {
     sort: function(event, ui) {
       if($('li.ticket', sortingHelper).length)
         $(sortingHelper).css({
-          top: (ui.item.offset().top + ui.item.height()) + 'px'
+          top: (ui.item.offset().top + 26) + 'px'
         });
     }
 

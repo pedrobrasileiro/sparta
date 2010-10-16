@@ -110,16 +110,46 @@ a.made-with-love
 ul.tickets-list
 
 li.ticket
+
+  @include border-radius(4px)
   border-bottom: 1px solid #F4F1F1
   padding: 5px 8px
+
   &:last-child
     border-color: transparent
-  &:hover
-    background: #FEFFF7
-    color: black
+
+  //&:hover
+    //background: #FEFFF7
+    //color: black
+    //.description
+      //color: black
+
   &.ui-selected
-    background: #1E2F77
+    background: #4E111D
     color: white
+    .description
+      color: white
+
+  //
+
+  .number-container
+    display: inline-block
+    width: 30px
+    text-align: right
+
+  .number
+    @include border-radius(3px)
+    @include text-shadow(-1px, 1px, 0, black)
+    padding: 3px
+    font-size: 11px
+    background: #737373
+    color: white
+    vertical-align: middle
+
+  .description
+    padding-left: 4px
+    font-size: 14px
+    color: #454545
 
 #ui-sorting-helper
   position: absolute
