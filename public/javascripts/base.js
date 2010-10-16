@@ -9,6 +9,7 @@ $(function() {
     distance: 10,
     handle: 'span.drag-mate',
     axis: 'y',
+    connectWith: 'ul.tickets-list',
 
     start: function(event, ui) {
       sortable = $(this);
@@ -18,14 +19,20 @@ $(function() {
 
         sortingPosition = $('li.ticket.ui-selected', sortable).index(ui.item);
 
-        $('li.ticket.ui-selected:not(.ui-sortable-placeholder)', sortable)
+        $('ul.tickets-list li.ticket.ui-selected:not(.ui-sortable-placeholder)')
           .not(ui.item)
-          .each( function() {
-            $(this).data(
-              'index-backup',
-              $('li.ticket:not(.ui-sortable-placeholder)', sortable)
-                .index(this)
-            );
+          .each(function() {
+            var parent = $(this).parent();
+
+            $(this)
+              .data(
+                'index-backup',
+                $('li.ticket:not(.ui-sortable-placeholder)', parent).index(this)
+              )
+              .data(
+                'parent-backup',
+                parent
+              );
           })
           .appendTo(sortingHelper);
 
@@ -44,12 +51,15 @@ $(function() {
           if(event.keyCode == 27) {
 
             $('li.ticket', sortingHelper).each(function() {
+              var parent = $(this).data('parent-backup');
+              console.log(parent);
+
               if(
-                  $('li.ticket:not(.ui-sortable-placeholder)', sortable)
+                  $('li.ticket:not(.ui-sortable-placeholder)', parent)
                     .length > $(this).data('index-backup')) {
 
                 $(this).insertBefore(
-                  $('li.ticket:not(.ui-sortable-placeholder)', sortable)[$(this).data('index-backup')]
+                  $('li.ticket:not(.ui-sortable-placeholder)', parent)[$(this).data('index-backup')]
                 );
               } else {
                 sortable.append(this);
@@ -90,7 +100,6 @@ $(function() {
           top: (ui.item.offset().top + 26) + 'px'
         });
     }
-
   };
 
   $('ul.tickets-list').sortable(sortableOptions).disableSelection();

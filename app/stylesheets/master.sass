@@ -118,7 +118,9 @@ li.ticket
   &:last-child
     border-color: transparent
 
-  //&:hover
+  &:hover, &.ui-selected
+    .buttons
+      display: inline-block
     //background: #FEFFF7
     //color: black
     //.description
@@ -129,6 +131,7 @@ li.ticket
     color: white
     .description
       color: white
+
 
   //
 
@@ -152,6 +155,10 @@ li.ticket
     padding-left: 4px
     font-size: 14px
     color: #454545
+
+  .buttons
+    display: none
+    float: right
 
 #ui-sorting-helper
   position: absolute
@@ -177,6 +184,15 @@ li.ticket
   .meta-column
     margin-right: -300px
 
+.column-wrapper
+  padding-right: 20px
+
+ul.tickets-actions
+  overflow: hidden
+  margin: 0 0 20px 0
+  li
+    float: right
+
 // Promo
 
 #promo
@@ -199,3 +215,25 @@ li.ticket
   .video
     float: right
     margin-right: -530px
+
+// Button
+
+.button
+  @include border-radius(4px)
+  @include text-shadow(-1px, 1px, 0, #E3E3E3)
+  padding: 5px 10px
+  background: red
+  font-size: 13px
+  text-decoration: none
+  background: #BABABA
+  color: #171717
+  display: inline-block
+
+  &.green
+    background: #B6E15B
+    color: #546C04
+    &:hover
+      background: #D3E77F
+
+  .shortcut
+    color: #5E5E5E

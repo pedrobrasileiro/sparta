@@ -1,4 +1,5 @@
-= link_to "Add an new ticket (⌘+⌥+N)", new_project_ticket_path
+%ul.tickets-actions
+  %li= link_to 'Add an new ticket <span class="shortcut">(⌘+⌥+N)</span>'.html_safe, new_project_ticket_path, :class => 'button green'
 
 %ul.tickets-list
   - @tickets.each do |ticket|
@@ -7,5 +8,7 @@
       %span.number-container
         %span.number= link_to "##{ticket.number}", [@project, ticket]
       %span.description= ticket.description
+      %span.buttons
+        = link_to image_tag('trash.gif'), '#'
 
 %ul#ui-sorting-helper.tickets-list
