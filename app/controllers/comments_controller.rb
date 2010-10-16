@@ -10,4 +10,10 @@ class CommentsController < InheritedResources::Base
       end
     end        
   end
+  
+  def create
+    super do |format|      
+      format.js { render :template => 'comments/show', :layout => false }
+    end
+  end
 end
