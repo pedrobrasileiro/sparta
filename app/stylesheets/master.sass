@@ -118,7 +118,9 @@ li.ticket
   &:last-child
     border-color: transparent
 
-  //&:hover
+  &:hover, &.ui-selected
+    .buttons
+      display: inline-block
     //background: #FEFFF7
     //color: black
     //.description
@@ -129,6 +131,7 @@ li.ticket
     color: white
     .description
       color: white
+
 
   //
 
@@ -152,6 +155,7 @@ li.ticket
     color: #454545
 
   .buttons
+    display: none
     float: right
 
 #ui-sorting-helper
