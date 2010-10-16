@@ -1,4 +1,8 @@
 - content_for :content do
-  = yield
+  .columns
+    .column.main-column
+      = yield
+    .column.meta-column
+      Meta panel
 
 = render 'layouts/base'

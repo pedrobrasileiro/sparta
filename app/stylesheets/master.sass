@@ -110,6 +110,13 @@ a.made-with-love
 ul.tickets-list
 
 li.ticket
+  border-bottom: 1px solid #F4F1F1
+  padding: 5px 8px
+  &:last-child
+    border-color: transparent
+  &:hover
+    background: #FEFFF7
+    color: black
   &.ui-selected
     background: #1E2F77
     color: white
@@ -117,3 +124,24 @@ li.ticket
 #ui-sorting-helper
   position: absolute
   display: none
+
+.ui-selectable-helper
+  @include opacity(0.6)
+  border: 1px solid #DCD9CC
+  background: #FEFFF7
+  position: absolute
+
+.ui-selecting
+  background: #8ECAEA
+  color: white
+
+.columns
+  overflow: hidden
+  padding-right: 300px
+  .column
+    float: left
+  .main-column
+    width: 100%
+  .meta-column
+    margin-right: -300px
+
