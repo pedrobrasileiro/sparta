@@ -118,4 +118,11 @@ $(function() {
   });
 
   $('.drag-mate a').live('click', function() { return false; });
+  
+  
+  // Comments
+  $('#new_comment').live('ajax:success', function(_, data) {
+    $(this).siblings('.comments').append(data);
+    $(this).find('textarea').val('');
+  });
 });
