@@ -1,4 +1,6 @@
 Sparta::Application.routes.draw do
+  resources :tickets
+
   resources :projects
 
   devise_for :users
