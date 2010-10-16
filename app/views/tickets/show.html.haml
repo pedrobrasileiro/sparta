@@ -12,6 +12,4 @@
     %li
       %p= comment.body
 
-- semantic_form_for [@project, @ticket, @comment]  do |f|
-  = f.inputs :body
-  = f.buttons
+= render :partial => 'comments/form'
