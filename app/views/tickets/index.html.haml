@@ -3,7 +3,7 @@
 %ul.tickets-list
   - @tickets.each do |ticket|
     %li.ticket
-      %span.drag-mate #
+      %span.drag-mate= link_to image_tag('drag.gif'), '#'
       %span.number= ticket.number
       %span.description= ticket.description
 

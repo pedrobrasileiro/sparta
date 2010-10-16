@@ -96,4 +96,6 @@ $(function() {
   $('ul.tickets-list').sortable(sortableOptions).disableSelection();
 
   $('ul.tickets-list').selectable();
+
+  $('.drag-mate a').live('click', function() { return false; });
 });
