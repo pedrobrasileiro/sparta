@@ -1,7 +1,9 @@
 Sparta::Application.routes.draw do
 
   resources :projects, :except => [:show] do
-    resources :tickets
+    resources :tickets do
+      resources :comments
+    end
   end
   
   # match "/stories/:name" => redirect {|params| "/posts/#{params[:name].pluralize}" } 
