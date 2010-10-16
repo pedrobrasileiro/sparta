@@ -1,3 +1,6 @@
 %h2 Sparta
-%h3= link_to 'Sign up', new_user_registration_path
-%p or #{link_to 'sign in', new_user_session_path}
+- unless current_user
+  %h3= link_to 'Sign up', new_user_registration_path
+  %p or #{link_to 'sign in', new_user_session_path}
+- else
+  %h3= link_to 'Go to ???', '#'

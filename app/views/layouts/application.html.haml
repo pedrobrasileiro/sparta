@@ -10,17 +10,18 @@
 
   %body(id="#{body_id}")
     #root
-      #logo= link_to 'Sparta', root_path
+      #header
+        #logo= link_to 'Sparta', root_path
 
-      - if notice
-        .notice
-          %p= notice
-          = link_to '×', '', :class => 'close'
+        - if notice
+          .notice
+            %p= notice
+            = link_to '×', '', :class => 'close'
 
-      - if alert
-        .alert
-          %p= alert
-          = link_to '×', '', :class => 'close'
+        - if alert
+          .alert
+            %p= alert
+            = link_to '×', '', :class => 'close'
 
       #content
         = yield

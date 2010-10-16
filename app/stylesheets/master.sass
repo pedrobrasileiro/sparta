@@ -5,29 +5,15 @@
 body
   font-family: Helvetica Neue, Helvetica, Arial
   background: white
-  border-top: 15px solid #343434
+  background: #343434
 
-a.made-with-love
-  text-decoration: none
-  width: 157px
+// Header
+
+#header
+  background: white
+  margin-top: 15px
   display: inline-block
-  &:hover
-    .love-panic
-      color: #F7285F
-  .love-panic
-    text-decoration: underline
-    text-transform: uppercase
-    font-weight: 700
-    color: #FF99C2
-    letter-spacing: -1px
-    font-size: 12px
-  .since
-    color: #818181
-    font-size: 10px
-    font-weight: 100
-    letter-spacing: 1px
-    vertical-align: super
-    margin-left: 8px
+  width: 100%
 
 #logo
   display: inline-block
@@ -44,3 +30,34 @@ a.made-with-love
 
 body#ui #logo
   background-position: 0px -85px
+
+// Footer
+
+@include sticky-footer(36px, "#root", "#root-footer", "#footer")
+
+#footer
+  background: #EDEDED
+
+a.made-with-love
+  text-decoration: none
+  width: 157px
+  display: inline-block
+  float: right
+  margin: 10px 20px
+  &:hover
+    .love-panic
+      color: #F7285F
+  .love-panic
+    text-decoration: underline
+    text-transform: uppercase
+    font-weight: 700
+    color: #921B4A
+    letter-spacing: -1px
+    font-size: 12px
+  .since
+    color: #101010
+    font-size: 10px
+    font-weight: 100
+    letter-spacing: 1px
+    vertical-align: super
+    margin-left: 8px
