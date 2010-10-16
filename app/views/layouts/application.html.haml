@@ -1,0 +1,32 @@
+!!!5
+%html
+
+  %head
+    %title Sparta
+    = stylesheet_link_tag 'master'
+    = javascript_include_tag 'jquery-1.4.3rc2.min', 'jquery.timeago', 'base'
+    = csrf_meta_tag
+
+  %body
+    #root
+
+      - if notice
+        .notice
+          %p= notice
+          = link_to '×', '', :class => 'close'
+
+      - if alert
+        .alert
+          %p= alert
+          = link_to '×', '', :class => 'close'
+
+      #content
+        = yield
+
+      #root-footer
+
+    #footer
+      = link_to '<span class="love-panic">Made with Love</span><span class="since">Since 2010</span>'.html_safe, '#', :class => 'made-with-love'
+
+    - if RAILS_ENV == 'production'
+      = render 'layouts/google_analytics'
