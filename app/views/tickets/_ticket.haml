@@ -1,10 +1,14 @@
 = content_tag_for :li, ticket, :class => 'ticket' do
   %span.drag-mate= link_to image_tag('drag.gif'), '#'
   %span.number-container
-    %span.number{:style => "background-color: #{ticket.status.color}"}= link_to "##{ticket.number} : #{ticket.status.name}", [@project, ticket]
+    %span.number(style="background-color: #{ticket.status.color}" title="#{ticket.status.name}")= link_to "##{ticket.number}", [@project, ticket]
+  %span.description= ticket.description
+  %span.labels
     - if ticket.type
       %span.type{:style => "background-color: #{ticket.type.color}"}= ticket.type.name
-  %span.description= ticket.description
+    - if ticket.assigned_to.present?
+      %span.assign(class="#{current_user == ticket.assigned_to ? 'its-you' : ''}")
+        = link_to ticket.assigned_to.email, '#'
   %span.buttons
     = link_to 'Edit', [@project, ticket], :class => 'edit-ticket'
     = link_to image_tag('trash.gif'), [@project, ticket], :class => 'delete-ticket', :confirm => 'You are really want to delete this ticket?', :method => :delete, :remote => true

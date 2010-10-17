@@ -54,6 +54,7 @@ $(function() {
 
   function onContentChange() {
     metaPanel.jScrollPane();
+    $('abbr.timeago').timeago();
   }
 
   function onWindowResize() {
@@ -204,7 +205,6 @@ $(function() {
       } else if (selected.length === 1) {
         $.get($('span.number a', selected).attr('href'), function(html){
           setMetapanelContent(html);
-          $('abbr.timeago').timeago();
         });
       }
     }
@@ -225,6 +225,7 @@ $(function() {
   $('#new_comment').live('ajax:success', function(_, data) {
     $(this).siblings('.comments').append(data);
     $(this).find('textarea').val('');
+    onContentChange();
   });
 
   // Serialize

@@ -4,7 +4,7 @@
 %ul.tickets-actions
   %li.relative-it= link_to 'Add an new ticket'.html_safe, new_project_ticket_path, :remote => true, :class => 'button green add-ticket menu-popup menu-popup-window bright-green'
 
-.tickets-inbox
+.tickets-lists
 
 - if @tickets.class == Hash
   - if @tickets[:both]
@@ -37,4 +37,3 @@
   - @tags.each do |tag|
     = link_to tag.name, project_tickets_path + "?tags=#{tag.name}"    
   
-
