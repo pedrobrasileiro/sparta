@@ -1,7 +1,9 @@
 class Ticket < ActiveRecord::Base
   belongs_to :project
   has_many :comments
-  before_create :numbering_ticket
+  belongs_to :assigned_to, :class_name => 'User', :foreign_key => 'assigned_to_id'
+  belongs_to :reporter, :class_name => 'User', :foreign_key => 'reporter_id'
+  before_create :numbering_ticke
 
   default_scope :order => '"position" asc'
 
@@ -10,12 +12,7 @@ class Ticket < ActiveRecord::Base
       ['"position" = find_in_set("id"::text, ?)', ids.join(',')],
       { :id => ids }
     )
-  end
-  
-  def assigned_to
-    
-  end
-  
+  end  
 
 private
 

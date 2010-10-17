@@ -5,6 +5,13 @@
 %p
   %b Desc:
   = @ticket.description
+%p
+  %b Assigned_to
+  = @ticket.assigned_to.try(:email)
+%p
+  %b Reporter
+  = @ticket.reporter.try(:email)
+    
 = link_to 'Edit', edit_project_ticket_path(@project, @ticket)
 
 = render :partial => 'comments/list'
