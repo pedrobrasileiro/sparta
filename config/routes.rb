@@ -8,6 +8,7 @@ Sparta::Application.routes.draw do
       collection do
         post :sort
         post :bulk_delete
+        post :bulk_update
       end
 
       resources :comments

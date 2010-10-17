@@ -6,11 +6,13 @@ class TicketsController < InheritedResources::Base
 
   def index
     @project = Project.find(params[:project_id])
+    @ticket = @project.tickets.new
+    
     @tags = Ticket.tag_counts_on(:tags)
     if params[:tags]
       @tickets = {}
-      @tickets[:both] = [params[:tags].split(',').map(&:capitalize).join(', '), @project.tickets.tagged_with(params[:tags])]
-      @tickets[:other] = params[:tags].split(',').map do |tag|
+      @tickets[:both] = [params[:tags].gsub(', ', ',').split(',').map(&:capitalize).join(', '), @project.tickets.tagged_with(params[:tags])]
+      @tickets[:other] = params[:tags].gsub(', ', ',').split(',').map do |tag|
         [tag.capitalize, (@project.tickets.tagged_with(tag) - @tickets[:both][1])]
       end
     else
@@ -57,5 +59,9 @@ class TicketsController < InheritedResources::Base
   def bulk_delete
     Ticket.delete params[:ticket]
     render :nothing => true
+  end
+    
+  def bulk_update
+    
   end
 end

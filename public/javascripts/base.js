@@ -207,7 +207,8 @@ $(function() {
     selected: function(event, ui) {
       var selected = $('.ticket.ui-selected');
       if(selected.length > 1) {
-        setMetapanelContent('Goo');
+        setMetapanelContent($('#ticket-template').html());
+        $('#ticket-template').remove()
       } else if (selected.length === 1) {
         $.get($('span.number a', selected).attr('href'), function(html){
           setMetapanelContent(html);
@@ -239,7 +240,7 @@ $(function() {
   function serializeObjects(objects) {
 
     var str = [];
-
+s
     $(objects).each(function() {
       var res = $(this).attr('id').match(/(.+)[-=_](.+)/);
       if(res) str.push((res[1]+'[]')+'='+(res[2]));
