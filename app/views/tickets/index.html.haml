@@ -37,7 +37,7 @@
   %form{:id => 'tags_search', :method => 'get', :action => project_tickets_path}
     = label_tag 'Search'
     %input{:name => 'tags', :placeholder => 'first_tag, second_tag'}
-    %input{:type => 'button', :value => 'Show'}
+    %input{:type => 'submit', :value => 'Show'}
 
   .select-tag-filter
     %form
@@ -45,11 +45,14 @@
       = select_tag 'tags', options_for_select(@tags.map {|t| [t.name, project_tickets_path + "?tags=#{t.name}"] } ), :class => 'select-tag'
 
 #ticket-template
-  Edit Tickets
+  %p Edit Tickets
+  %br
   - semantic_form_for [@project, @ticket], :url => bulk_update_project_tickets_path  do |f|
     - f.inputs do
       -#= f.input :tag_list
       = f.input :assigned_to, :collection => @project.users.map {|user| [user.email, user.id]}
       = f.input :status, :collection => @project.ticket_statuses.map {|status| [status.name, status.id]}
       = f.input :type, :collection => @project.ticket_types.map {|type| [type.name, type.id]}
-    = f.buttons
+    - f.buttons do
+      %li{:class => 'commit'}= f.submit 'Update Tickets'
+  
