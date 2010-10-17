@@ -11,8 +11,8 @@ class TicketsController < InheritedResources::Base
     @tags = Ticket.tag_counts_on(:tags)
     if params[:tags]
       @tickets = {}
-      @tickets[:both] = [params[:tags].split(',').map(&:capitalize).join(', '), @project.tickets.tagged_with(params[:tags])]
-      @tickets[:other] = params[:tags].split(',').map do |tag|
+      @tickets[:both] = [params[:tags].gsub(', ', ',').split(',').map(&:capitalize).join(', '), @project.tickets.tagged_with(params[:tags])]
+      @tickets[:other] = params[:tags].gsub(', ', ',').split(',').map do |tag|
         [tag.capitalize, (@project.tickets.tagged_with(tag) - @tickets[:both][1])]
       end
     else
