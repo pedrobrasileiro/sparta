@@ -336,4 +336,29 @@ s
   $('select.select-tag').change(function() {
     window.location = $(this).val();
   });
+
+  var modalWindow = $('<div id="modal-window"></div>').appendTo('body');
+
+  $('.modal-window-open').live('ajax:success', function(_, data) {
+    modalWindow
+      .html(data)
+      .css({
+        top: $(this).offset().top + 20,
+        left: $(this).offset().left
+      })
+      .show();
+
+    $(this).one('click', function() {
+      modalWindow.hide();
+      return false;
+    })
+  });
+
+  $('.remove-user-from-project').live('ajax:success', function() {
+    $(this).parents('li').remove();
+  })
+
+  $('.add-user-form').live('ajax:success', function() {
+    $(this).find('input').val('');
+  });
 });

@@ -1,11 +1,8 @@
-- @users.each do |user|
-  %li
-    = user.email 
-    = link_to 'X', project_project_user_path(@project, user), :confirm => 'Are you sure?', :method => :delete
+#project-users
+  %ul
+    = render :partial => 'user', :collection => @users
 
-Add user:
-- semantic_form_for @project do |f|
-  = f.inputs :user
-  = f.submit 'Add User'
-  
-  
+  Add user:
+  - semantic_form_for @project, :html => { :class => 'add-user-form' }, :remote => true do |f|
+    = f.inputs :user
+    = f.submit 'Add User'

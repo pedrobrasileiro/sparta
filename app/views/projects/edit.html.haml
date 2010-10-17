@@ -1,11 +1,9 @@
 %h1 Editing project
+
 = render 'form'
-= link_to 'Show', @project
-|
-= link_to 'Back', projects_path
 |
 = link_to 'Ticket Statuses', project_ticket_statuses_path(@project)
 |
-= link_to 'Ticket Types', project_ticket_types_path(@project) 
+= link_to 'Ticket Types', project_ticket_types_path(@project)
 |
 = link_to 'Delete Project', @project, :confirm => 'Are you sure?', :method => :delete

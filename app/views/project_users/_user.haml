@@ -1,0 +1,4 @@
+%li
+  = image_tag(user.gravatar_url.html_safe, :alt => '')
+  = user.email
+  = link_to '×', project_project_user_path(@project, user), :confirm => 'Are you sure?', :method => :delete, :class => 'remove-user-from-project'

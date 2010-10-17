@@ -17,8 +17,8 @@
 
     - if @project && !@project.new_record?
       %li= link_to 'Tickets', @project
-      %li= link_to 'People', project_project_users_path(@project)
-      %li= link_to 'Settings', edit_project_path(@project)
+      %li= link_to 'People', project_project_users_path(@project), :remote => true, :class => 'modal-window-open'
+      %li= link_to 'Settings', edit_project_path(@project), :remote => true, :class => 'modal-window-open'
 
     %li= link_to 'Sign out', destroy_user_session_path, :remote => true, :class => 'sign-out'
 
