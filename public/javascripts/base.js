@@ -47,7 +47,7 @@ $(function() {
   // New ticket
 
   function openNewTicket() {
-    ''
+    $('.add-ticket').click();
   }
 
   $(document).bind('keypress', 'n', openNewTicket);
