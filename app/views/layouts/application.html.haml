@@ -7,22 +7,23 @@
         - if current_user
           - if current_user.projects.count > 0
             - if current_user.projects.count == 1
-              %li= link_to current_user.projects.first.name, current_user.projects.first
-              %li= link_to 'Add an new project', new_project_path, :class => 'add-project menu-popup'
+              %li.project-name= current_user.projects.first.name
+              %li= link_to 'New project', new_project_path, :remote => true, :class => 'add-project menu-popup menu-popup-window green'
             - else
               %li.drop-down
                 = link_to "#{@project ? @project.name : 'Select project'} #{image_tag('drop.gif')}".html_safe, '#', :class => 'select-project menu-popup'
                 %ul
                   - current_user.projects.each do |project|
-                    %li= link_to project.name, project
-                  %li= link_to 'Add an new', new_project_path, :class => 'add-project'
+                    - unless @project and project == @project
+                      %li= link_to project.name, project
+                  %li= link_to 'Add an new', new_project_path, :remote => true, :class => 'add-project menu-popup menu-popup-window green'
           - else
-            %li= link_to 'Add an new project', new_project_path, :class => 'add-project menu-popup'
+            %li= link_to 'New project', new_project_path, :remote => true, :class => 'add-project menu-popup menu-popup-window green'
 
           - if @project
-            %li= link_to 'Tickets', '#'
-            %li= link_to 'People', '#'
-            %li= link_to 'Settings', '#'
+            %li= link_to 'Tickets', @project
+            %li= link_to 'People', '#' #project_project_users_path(@project)
+            %li= link_to 'Settings', '#' # edit_project_path(@project)
 
       .column-wrapper
         = yield
