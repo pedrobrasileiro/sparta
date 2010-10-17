@@ -33,6 +33,9 @@
 %ul#ui-sorting-helper.tickets-list
 
 - content_for :meta_footer do
+  %form{:id => 'tags_search', :method => 'get', :action => project_tickets_path}
+    %input{:name => 'tags', :placeholder => 'first_tag,second_tag'}
+    %input{:type => 'button', :value => 'Show'}
   tags:
   - @tags.each do |tag|
     = link_to tag.name, project_tickets_path + "?tags=#{tag.name}"    

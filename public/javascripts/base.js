@@ -304,4 +304,6 @@ $(function() {
 
     $('.tickets-list:first').append(data);
   });
+  
+  $("[placeholder]").textPlaceholder();
 });
