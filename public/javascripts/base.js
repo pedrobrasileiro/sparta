@@ -114,13 +114,9 @@ $(function() {
                 oldTicket  = $(ticketId),
                 isSelected = oldTicket.is('.ui-selected');
 
-            console.log(ticket);
-
             oldTicket.replaceWith(ticket);
             if(isSelected) $(ticketId).addClass('ui-selected');
           }
-
-          clearMetaPanel();
         },
         'json'
       );
@@ -406,7 +402,7 @@ $(function() {
     $(this).parents('li').remove();
   })
 
-  $('.add-user-form').live('ajax:success', function() {
+  $('form.add-user-form').live('ajax:success', function() {
     $(this).find('input').val('');
   });
 });
