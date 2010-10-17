@@ -16,6 +16,7 @@ gem 'inherited_resources', '1.1.2'
 
 gem "friendly_id", "3.1.7"
 
+gem 'acts-as-taggable-on'
 gem 'haml'
 gem 'compass'
 gem 'formtastic'
