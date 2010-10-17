@@ -3,6 +3,16 @@ class TicketsController < InheritedResources::Base
   belongs_to :project
 
   respond_to :js
+  
+  def index
+    @project = Project.find(params[:project_id])
+    @tags = params[:tags].split(',').map(&:capitalize).join(', ')
+    @tickets = if params[:tags]
+      @project.tickets.tagged_with(params[:tags].split(','), :any => true)
+    else
+      @project.tickets
+    end
+  end
 
   def show
     super do |format|

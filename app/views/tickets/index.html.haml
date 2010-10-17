@@ -6,7 +6,12 @@
 
 .tickets-inbox
 
-%h3.tickets-header All Tickets
+- if @tags
+  %h3.tickets-header
+    Tags:
+    = @tags
+- else 
+  %h3.tickets-header All Tickets
 
 %ul.tickets-list
   - @tickets.each do |ticket|

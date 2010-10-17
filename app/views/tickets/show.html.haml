@@ -14,13 +14,16 @@
         %dt Created
         %dd= content_tag(:abbr, I18n.l(@ticket.created_at, :format => :short), :class => 'timeago', :title => @ticket.created_at.iso8601)
 
-        - if @ticket.assigned_to
+        - if @ticket.assigned_to.present?
           %dt Assigned to
           %dd= @ticket.assigned_to.email
 
-        - if @ticket.reporter
+        - if @ticket.reporter.present?
           %dt Reported by
           %dd= @ticket.reporter.email
 
+        - if @ticket.tag_list.present?
+          %dt Tags
+          %dd= @ticket.tag_list
 
     = render :partial => 'comments/list'
