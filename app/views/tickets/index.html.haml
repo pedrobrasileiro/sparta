@@ -4,17 +4,16 @@
 %ul.tickets-actions
   %li.relative-it= link_to 'Add an new ticket'.html_safe, new_project_ticket_path, :remote => true, :class => 'button green add-ticket menu-popup menu-popup-window bright-green'
 
-.tickets-inbox
+.tickets-lists
+  - if @tags
+    %h3.tickets-header
+      Tags:
+      = @tags
+  - else
+    %h3.tickets-header All Tickets
 
-- if @tags
-  %h3.tickets-header
-    Tags:
-    = @tags
-- else 
-  %h3.tickets-header All Tickets
+  %ul.tickets-list
+    - @tickets.each do |ticket|
+      = render ticket
 
-%ul.tickets-list
-  - @tickets.each do |ticket|
-    = render ticket
-
-%ul#ui-sorting-helper.tickets-list
+  %ul#ui-sorting-helper.tickets-list
