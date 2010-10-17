@@ -1,4 +1,4 @@
-- semantic_form_for [@project, @ticket], :remote => true do |f|
+- semantic_form_for [@project, @ticket], :remote => true, :html => { :class => (@ticket.new_record? ? 'new' : 'edit') } do |f|
   - f.inputs do
     = f.input :description
     = f.input :tag_list

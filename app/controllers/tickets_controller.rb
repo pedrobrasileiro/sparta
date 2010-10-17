@@ -3,7 +3,7 @@ class TicketsController < InheritedResources::Base
   belongs_to :project
 
   respond_to :js
-  
+
   def index
     @project = Project.find(params[:project_id])
     @ticket = @project.tickets.new
@@ -11,7 +11,7 @@ class TicketsController < InheritedResources::Base
     @tags = Ticket.tag_counts_on(:tags)
     if params[:tags]
       @tickets = {}
-      @tickets[:both] = [params[:tags].split(',').map(&:capitalize).join(', '), @project.tickets.tagged_with(params[:tags])]            
+      @tickets[:both] = [params[:tags].split(',').map(&:capitalize).join(', '), @project.tickets.tagged_with(params[:tags])]
       @tickets[:other] = params[:tags].split(',').map do |tag|
         [tag.capitalize, (@project.tickets.tagged_with(tag) - @tickets[:both][1])]
       end
@@ -35,6 +35,12 @@ class TicketsController < InheritedResources::Base
     @ticket = @project.tickets.build params[:ticket]
     @ticket.reporter_id = current_user
     create! do |format|
+      format.js { render :partial => 'ticket', :locals => { :ticket => @ticket } }
+    end
+  end
+
+  def update
+    update! do |format|
       format.js { render :partial => 'ticket', :locals => { :ticket => @ticket } }
     end
   end

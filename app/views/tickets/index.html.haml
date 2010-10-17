@@ -9,7 +9,7 @@
 - if @tickets.class == Hash
   - if @tickets[:both]
     %h3.tickets-header= @tickets[:both][0]
-  
+
     %ul.tickets-list
       - @tickets[:both][1].each do |ticket|
         = render ticket
@@ -18,14 +18,14 @@
     - @tickets[:other].each do |ticket|
       - unless ticket[1].empty?
         %h3.tickets-header= ticket[0]
-  
+
         %ul.tickets-list
           - ticket[1].each do |t|
             = render t
-          
+
 - if @tickets.class == Array
   %h3.tickets-header All Tickets
-  
+
   %ul.tickets-list
     - @tickets.each do |ticket|
       = render ticket
@@ -34,12 +34,15 @@
 
 - content_for :meta_footer do
   %form{:id => 'tags_search', :method => 'get', :action => project_tickets_path}
-    %input{:name => 'tags', :placeholder => 'first_tag,second_tag'}
+    = label_tag 'Search'
+    %input{:name => 'tags', :placeholder => 'first_tag, second_tag'}
     %input{:type => 'button', :value => 'Show'}
-  tags:
-  - @tags.each do |tag|
-    = link_to tag.name, project_tickets_path + "?tags=#{tag.name}" 
-    
+
+  .select-tag-filter
+    %form
+      = label_tag 'Select tag'
+      = select_tag 'tags', options_for_select(@tags.map {|t| [t.name, project_tickets_path + "?tags=#{t.name}"] } ), :class => 'select-tag'
+
 #ticket-template
   Edit Tickets
   - semantic_form_for [@project, @ticket], :url => bulk_update_project_tickets_path  do |f|
@@ -50,5 +53,3 @@
       = f.input :status, :collection => @project.ticket_statuses.map {|status| [status.name, status.id]}
       = f.input :type, :collection => @project.ticket_types.map {|type| [type.name, type.id]}
     = f.buttons
-     
-  

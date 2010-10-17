@@ -7,8 +7,9 @@
       .column-wrapper
         = yield
     .column.meta-column
-      .column-wrapper.scroll-pane      
-        .meta-footer
+      .column-wrapper.scroll-pane
+      .meta-footer
+        .meta-footer-wrapper
           = yield :meta_footer
 
 = render 'layouts/base'

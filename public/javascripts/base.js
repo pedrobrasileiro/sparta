@@ -58,7 +58,7 @@ $(function() {
   }
 
   function onWindowResize() {
-    metaPanel.height(metaPanelContainer.height() - 40);
+    metaPanel.height(metaPanelContainer.height() - 127);
     onContentChange();
   }
 
@@ -70,6 +70,12 @@ $(function() {
 
   function setMetapanelContent(html) {
     metaPanelContent.html(html);
+    onContentChange();
+  }
+
+
+  function clearMetaPanel() {
+    metaPanelContent.html('');
     onContentChange();
   }
 
@@ -196,7 +202,7 @@ $(function() {
 
   $('ul.tickets-list').selectable({
     filter: 'li.ticket',
-    cancel: 'a.delete-ticket,input',
+    cancel: 'a.delete-ticket, a.edit-ticket',
 
     selected: function(event, ui) {
       var selected = $('.ticket.ui-selected');
@@ -305,6 +311,29 @@ s
 
     $('.tickets-list:first').append(data);
   });
-  
+
+  //
+
+  $('.edit-ticket').live('ajax:success', function(_, data) {
+    setMetapanelContent(data);
+  });
+
   $("[placeholder]").textPlaceholder();
+
+  $('form.formtastic.edit.ticket').live('ajax:success', function(_, data) {
+    var ticketId   = '#' + data.match(/id="(ticket_\d+)"/)[1],
+        oldTicket  = $(ticketId),
+        isSelected = oldTicket.is('.ui-selected');
+
+    console.log(isSelected);
+
+    oldTicket.replaceWith(data);
+    if(isSelected) $(ticketId).addClass('ui-selected');
+
+    clearMetaPanel();
+  });
+
+  $('select.select-tag').change(function() {
+    window.location = $(this).val();
+  });
 });
