@@ -151,4 +151,19 @@ $(function() {
     $(this).siblings('.comments').append(data);
     $(this).find('textarea').val('');
   });
+
+  // Hotkeys
+
+  // Delete tickets
+
+  function deleteSelectedTickets() {
+    if(confirm('You really want to delete selected tickets?')) {
+
+    }
+
+    return false;
+  }
+
+  $(document).bind('keydown', 'del',       deleteSelectedTickets);
+  $(document).bind('keydown', 'backspace', deleteSelectedTickets);
 });
