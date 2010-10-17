@@ -3,6 +3,7 @@ Sparta::Application.routes.draw do
   resources :projects, :except => [:show] do
     resources :project_users
     resources :ticket_statuses
+    resources :ticket_types
     resources :tickets do
       collection do
         post :sort

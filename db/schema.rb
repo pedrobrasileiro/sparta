@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101017134936) do
+ActiveRecord::Schema.define(:version => 20101017151317) do
 
   create_table "comments", :force => true do |t|
     t.text     "body"
@@ -41,6 +41,14 @@ ActiveRecord::Schema.define(:version => 20101017134936) do
     t.integer  "project_id"
   end
 
+  create_table "ticket_types", :force => true do |t|
+    t.string   "name"
+    t.string   "color"
+    t.integer  "project_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "tickets", :force => true do |t|
     t.text     "description"
     t.datetime "created_at"
@@ -52,6 +60,7 @@ ActiveRecord::Schema.define(:version => 20101017134936) do
     t.integer  "assigned_to_id"
     t.boolean  "closed",         :default => false
     t.integer  "status_id"
+    t.integer  "type_id"
   end
 
   create_table "users", :force => true do |t|
