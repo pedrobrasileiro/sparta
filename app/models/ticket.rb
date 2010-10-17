@@ -11,7 +11,7 @@ class Ticket < ActiveRecord::Base
   
   after_update :close_if_status_close
   
-  default_scope :order => '"position" asc', :conditions => ['closed = ?', false]
+  default_scope :order => '"position" asc'#, :conditions => ['closed = ?', nil]
 
   def self.order ids
     update_all(
