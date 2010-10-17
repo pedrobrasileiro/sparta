@@ -1,13 +1,19 @@
 - content_for :content do
-  #header
-    #logo
-      = link_to '', root_path, :class => 'ribbon'
-      = link_to image_tag('sparta.png'), root_path
+  #root
+    #header
+      #logo
+        = link_to '', root_path, :class => 'ribbon'
+        = link_to image_tag('sparta.png'), root_path
 
-    #navigation= render "layouts/navigation_#{body_id}"
+      #navigation= render "layouts/navigation_#{body_id}"
 
-  #content
-    .content-wrapper
-      = yield
+    #content
+      .content-wrapper
+        = yield
+
+    #root-footer
+
+  #footer
+    = link_to '<span class="love-panic">Made with Love</span><span class="since">Since 2010</span>'.html_safe, '#', :class => 'made-with-love'
 
 = render 'layouts/base'

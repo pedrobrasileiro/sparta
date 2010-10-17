@@ -116,6 +116,8 @@ $(function() {
 
   $('ul.tickets-list').sortable(sortableOptions).disableSelection();
 
+  var metaPanel = $('.columns .column.meta-column .column-wrapper');
+
   $('ul.tickets-list').selectable({
     filter: 'li.ticket',
     cancel: 'a.delete-ticket,input',
@@ -126,7 +128,7 @@ $(function() {
         $('.columns .column.meta-column').html('Goo');
       } else if (selected.length === 1) {
         $.get($('span.number a', selected).attr('href'), function(html){
-          $('.columns .column.meta-column .column-wrapper').html(html);
+          metaPanel.html(html);
         });
       }
     }
@@ -135,7 +137,7 @@ $(function() {
   $('.drag-mate a').live('click', function() { return false; });
 
   $('a.add-ticket').bind('ajax:success', function(_, data) {
-    $('.tickets-inbox').prepend(data).find('textarea').focus();
+    metaPanel.html(data).find('textarea').focus();
   });
 
   $('a.delete-ticket').live('ajax:success', function() {
@@ -143,6 +145,7 @@ $(function() {
   });
 
   // Comments
+
   $('#new_comment').live('ajax:success', function(_, data) {
     $(this).siblings('.comments').append(data);
     $(this).find('textarea').val('');
@@ -161,10 +164,6 @@ $(function() {
 
     return str.join('&');
   }
-
-  console.log(
-    serializeObjects($('li.ticket'))
-  );
 
   //
   // Actions

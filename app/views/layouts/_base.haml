@@ -9,13 +9,7 @@
     = csrf_meta_tag
 
   %body(id="#{body_id}")
-    #root
-      = yield :content
-
-      #root-footer
-
-    #footer
-      = link_to '<span class="love-panic">Made with Love</span><span class="since">Since 2010</span>'.html_safe, '#', :class => 'made-with-love'
+    = yield :content
 
     - if RAILS_ENV == 'production'
       = render 'layouts/google_analytics'

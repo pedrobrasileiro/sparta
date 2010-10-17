@@ -61,10 +61,9 @@ body#page #navigation
 body#ui #navigation
   margin: 15px 0 0 140px
 
-
 // Footer
 
-@include sticky-footer(38px, "#root", "#root-footer", "#footer")
+@include sticky-footer(38px, "body#page #root", "body#page #root-footer", "body#page #footer")
 
 #footer
   background: #EDEDED
@@ -198,6 +197,8 @@ ul.tickets-actions
     float: right
 
 .meta-column
+  background: #F9F9F9
+  height: 100%
   position: fixed
   top: 0
   right: 0
