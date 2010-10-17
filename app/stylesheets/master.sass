@@ -48,6 +48,9 @@ body#ui #logo
 body#ui #logo a.ribbon
   height: 85px
 
+.relative-it
+  position: relative
+
 // Navigation
 
 #navigation
@@ -57,6 +60,8 @@ body#ui #logo a.ribbon
   li
     float: left
     margin-right: 25px
+    &.button-li
+      margin-top: -6px
     &.drop-down
       //position: relative
       ul
@@ -65,6 +70,7 @@ body#ui #logo a.ribbon
         position: absolute
         display: none
         background: #C1C1C1
+        width: 170px
         li
           display: block
           margin: 0
@@ -75,6 +81,8 @@ body#ui #logo a.ribbon
           a
             @include border-radius(0)
             @include text-shadow(none)
+            text-align: center
+            text-decoration: none
             background: none
             display: block
             margin: 0
@@ -101,7 +109,6 @@ body#ui #logo a.ribbon
   @include border-radius(6px)
   text-decoration: none
   display: inline-block
-  margin-top: -9px
   background: #E1E1E1
   padding: 6px 18px 6px 18px
   font-size: 18px
@@ -114,9 +121,8 @@ body#ui #logo a.ribbon
 .popup-window
   @include border-right-radius(6px)
   @include border-bottom-left-radius(6px)
-
+  z-index: 100
   position: absolute
-
   background: #E1E1E1
   padding: 10px 15px
   &.green

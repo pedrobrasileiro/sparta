@@ -249,7 +249,7 @@ $(function() {
         .css({
           top: '0',
           left: $(this).innerWidth(),
-          margin: '-' + ($.browser.webkit ? '9' : '7') + 'px 0 0 -5px'
+          margin: '0 0 0 -5px'
         });
 
       return false;
@@ -270,9 +270,9 @@ $(function() {
       .addClass('green')
       .append(data)
       .css({
-        top: $(this).offset().top - $(this).innerHeight(),
+        top: 0,
         left: $(this).innerWidth(),
-        margin: ($.browser.webkit ? '12' : '10') + 'px 0 0 -5px'
+        marginLeft: '-5px'
       });
   });
 
