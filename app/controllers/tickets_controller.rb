@@ -1,4 +1,5 @@
 class TicketsController < InheritedResources::Base
+  actions :index, :show, :new, :create, :edit, :update, :destroy
   belongs_to :project
 
   respond_to :js

@@ -5,9 +5,13 @@ class Ticket < ActiveRecord::Base
   belongs_to :assigned_to, :class_name => 'User', :foreign_key => 'assigned_to_id'
   belongs_to :reporter, :class_name => 'User', :foreign_key => 'reporter_id'
   before_create :numbering_ticket
-  after_create :set_default_status
   
-  default_scope :order => '"position" asc'
+  after_create :set_default_status
+  after_create :close_if_status_close
+  
+  after_update :close_if_status_close
+  
+  default_scope :order => '"position" asc'#, :conditions => ['closed = ?', false]
 
   def self.order ids
     update_all(
@@ -29,6 +33,16 @@ private
   def set_default_status
     unless self.status
       self.status = project.default_status
+      save
+    end
+  end
+  
+  def close_if_status_close
+    if !self.closed && self.status.close?
+      self.closed = true
+      save
+    elsif self.closed && !self.status.close?
+      self.closed = false
       save
     end
   end

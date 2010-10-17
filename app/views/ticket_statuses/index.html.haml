@@ -1,0 +1,19 @@
+%h1 Listing ticket_statuses
+%table
+  %tr
+    %th Name
+    %th Color
+    %th Close
+    %th
+    %th
+    %th
+  - @ticket_statuses.each do |ticket_status|
+    %tr
+      %td= ticket_status.name
+      %td= ticket_status.color
+      %td= ticket_status.close
+      %td= link_to 'Edit', edit_project_ticket_status_path(@project, ticket_status)
+      %td
+        -#= link_to 'Destroy', [@project, ticket_status], :confirm => 'Are you sure?', :method => :delete
+%br/
+= link_to 'New Ticket status', new_project_ticket_status_path

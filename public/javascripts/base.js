@@ -266,7 +266,8 @@ $(function() {
   $('.menu-popup.menu-popup-window').bind('ajax:success', function(_, data) {
     popupWindow
       .clone()
-      .appendTo('body')
+      //.appendTo('body')
+      .ansertAfter($(this))
       .addClass('green')
       .append(data)
       .css({
