@@ -3,6 +3,6 @@
     = render :partial => 'user', :collection => @users
 
   Add user:
-  - semantic_form_for @project, :html => { :class => 'add-user-form' }, :remote => true do |f|
-    = f.inputs :user
+  - semantic_form_for [@project, @user], :url => project_project_users_path, :html => { :class => 'add-user-form' }, :remote => true do |f|
+    = f.inputs :email
     = f.submit 'Add User'
