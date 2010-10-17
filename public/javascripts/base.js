@@ -239,4 +239,22 @@ $(function() {
 
     return str.join('&');
   }
+
+  $('.select-project').toggle(
+    function() {
+      $(this).parent().find('ul').show().position({
+        of: $(this),
+        my: 'left top',
+        at: 'right top',
+        offset: '-5px 0'
+      });
+
+      return false;
+    },
+
+    function() {
+      $(this).parent().find('ul').hide();
+      return false;
+    }
+  );
 });
