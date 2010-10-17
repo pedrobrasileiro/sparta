@@ -2,7 +2,6 @@
   - semantic_form_for [@project, @ticket], :remote => true do |f|
     - f.inputs do
       = f.input :description, :label => false
-      %select{:id => 'ticket_assigned_to_id', :name => 'ticket[assigned_to_id]'}
-        - @project.users.each do |user|
-          %option{:value => user.id }= user.email
+      = f.select :assigned_to_id, @project.users.map {|user| [user.email, user.id]}
+      = f.select :status_id, @project.ticket_statuses.map {|status| [status.name, status.id]}
     = f.buttons
