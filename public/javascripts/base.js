@@ -125,7 +125,7 @@ $(function() {
     selected: function(event, ui) {
       var selected = $('.ticket.ui-selected');
       if(selected.length > 1) {
-        $('.columns .column.meta-column').html('Goo');
+        metaPanel.html('Goo');
       } else if (selected.length === 1) {
         $.get($('span.number a', selected).attr('href'), function(html){
           metaPanel.html(html);
@@ -213,4 +213,16 @@ $(function() {
   }
 
   $(document).bind('keypress', 'n', openNewTicket);
+
+
+
+  function onResizeWindow() {
+    $('.meta-column .column-wrapper').height($('.meta-column').height() - 40);
+    $('.scroll-pane').jScrollPane();
+  }
+
+  onResizeWindow();
+
+  $(window).resize(onResizeWindow);
+
 });

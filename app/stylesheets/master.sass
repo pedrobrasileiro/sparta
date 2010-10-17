@@ -163,6 +163,20 @@ li.ticket
     display: none
     float: right
 
+  .edit-ticket
+    @include border-radius(3px)
+    @include text-shadow(-1px, 1px, 0, white)
+    font-size: 11px
+    text-decoration: none
+    vertical-align: middle
+    height: 18px
+    color: #4A4A4A
+    background: #C4E7F2
+    padding: 3px 6px
+
+  .delete-ticket
+    height: 13px
+
 #ui-sorting-helper
   position: absolute
   display: none
@@ -202,6 +216,12 @@ ul.tickets-actions
   position: fixed
   top: 0
   right: 0
+
+  .column-wrapper
+    overflow: auto
+    margin: 20px 0
+    width: 400px
+    height: 200px
 
 // Promo
 
@@ -252,4 +272,86 @@ ul.tickets-actions
 #new_comment
   textarea
     width: 250px
+
+//
+
+.jspContainer
+  overflow: hidden
+  position: relative
+
+.jspPane
+  position: absolute
+
+.jspDrag, .jspTrack
+  @include border-radius(5px)
+
+.jspVerticalBar
+  position: absolute
+  top: 0
+  right: 0
+  width: 10px
+  height: 100%
+
+.jspHorizontalBar
+  position: absolute
+  bottom: 0
+  left: 0
+  width: 100%
+  height: 16px
+  background: red
+
+.jspVerticalBar *, .jspHorizontalBar *
+  margin: 0
+  padding: 0
+
+.jspCap
+  display: none
+
+.jspHorizontalBar .jspCap
+  float: left
+
+.jspTrack
+  background: #EDEDED
+  position: relative
+
+.jspDrag
+  background: #BEBEBE
+  position: relative
+  top: 0
+  left: 0
+  cursor: pointer
+
+.jspHorizontalBar .jspTrack, .jspHorizontalBar .jspDrag
+  float: left
+  height: 100%
+
+.jspArrow
+  background: #50506d
+  text-indent: -20000px
+  display: block
+  cursor: pointer
+
+.jspArrow.jspDisabled
+  cursor: default
+  background: #80808d
+
+.jspVerticalBar .jspArrow
+  height: 16px
+
+.jspHorizontalBar .jspArrow
+  width: 16px
+  float: left
+  height: 100%
+
+.jspVerticalBar .jspArrow:focus
+  outline: none
+
+.jspCorner
+  background: #eeeef4
+  float: left
+  height: 100%
+
+/* Yuk! CSS Hack for IE6 3 pixel bug :( */
+* html .jspCorner
+  margin: 0 -3px 0 0
 
