@@ -1,6 +1,6 @@
 class Ticket < ActiveRecord::Base
   belongs_to :project
-  has_many :comments
+  has_many :comments, :dependent => :destroy
   belongs_to :status, :class_name => 'TicketStatus', :foreign_key => 'status_id'
   belongs_to :assigned_to, :class_name => 'User', :foreign_key => 'assigned_to_id'
   belongs_to :reporter, :class_name => 'User', :foreign_key => 'reporter_id'
