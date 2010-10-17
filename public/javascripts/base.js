@@ -79,6 +79,42 @@ $(function() {
     onContentChange();
   }
 
+  function showBulkForm() {
+    setMetapanelContent($('#ticket-template').html());
+
+    var form = $('.meta-column form');
+
+    //form.attr('id', '');
+    form.find('select').each(function() {
+      var select = $(this),
+          defaultValue = $(this).val();
+
+      $(this).change(function() {
+        if(select.val() == defaultValue) {
+          select.removeClass('changed');
+        } else {
+          select.addClass('changed')
+        }
+
+      })
+    });
+
+    form.submit(function() {
+      var selected = $('li.ticket.ui-selected'),
+          ids = serializeObjects(selected),
+          update = form.find('.changed,[type=hidden]').serialize();
+
+      $.post(
+        form.attr('action'),
+        ids.replace(/ticket\[\]/g, 'ticket_ids[]') + '&' + update,
+        function(data) {
+          console.log(data);
+        }
+      );
+      return false;
+    });
+  }
+
   //
   // Ticket selecteble and sortable
   //
@@ -205,10 +241,9 @@ $(function() {
     cancel: 'a.delete-ticket, a.edit-ticket',
 
     selected: function(event, ui) {
-      var selected = $('.ticket.ui-selected');
+      var selected = $('li.ticket.ui-selected');
       if(selected.length > 1) {
-        setMetapanelContent($('#ticket-template').html());
-        $('#ticket-template').remove()
+        showBulkForm();
       } else if (selected.length === 1) {
         $.get($('span.number a', selected).attr('href'), function(html){
           setMetapanelContent(html);
@@ -240,7 +275,7 @@ $(function() {
   function serializeObjects(objects) {
 
     var str = [];
-s
+
     $(objects).each(function() {
       var res = $(this).attr('id').match(/(.+)[-=_](.+)/);
       if(res) str.push((res[1]+'[]')+'='+(res[2]));
