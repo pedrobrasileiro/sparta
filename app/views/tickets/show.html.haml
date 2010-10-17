@@ -1,16 +1,26 @@
 %p#notice= notice
 %p
-  %b Number
+  %b Number:
   = @ticket.number
+
 %p
   %b Desc:
   = @ticket.description
-%p
-  %b Assigned_to
-  = @ticket.assigned_to.try(:email)
-%p
-  %b Reporter
-  = @ticket.reporter.try(:email)
+  
+- if @ticket.assigned_to.present?
+  %p
+    %b Assigned_to:
+    = @ticket.assigned_to.email
+    
+- if @ticket.reporter.present?
+  %p
+    %b Reporter:
+    = @ticket.reporter.email
+
+- if @ticket.tag_list.present?
+  %p
+    %b Tags:
+    = @ticket.tag_list
     
 = link_to 'Edit', edit_project_ticket_path(@project, @ticket)
 
