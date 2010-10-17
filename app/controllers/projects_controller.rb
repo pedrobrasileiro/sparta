@@ -5,8 +5,6 @@ class ProjectsController < InheritedResources::Base
     create! {project_tickets_path(@project)}
     current_user.projects << @project    
   end
-  
-  
     
   private
   

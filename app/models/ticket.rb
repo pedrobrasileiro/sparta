@@ -4,10 +4,8 @@ class Ticket < ActiveRecord::Base
   belongs_to :status, :class_name => 'TicketStatus', :foreign_key => 'status_id'
   belongs_to :assigned_to, :class_name => 'User', :foreign_key => 'assigned_to_id'
   belongs_to :reporter, :class_name => 'User', :foreign_key => 'reporter_id'
-  before_create :numbering_ticke
+  before_create :numbering_ticket
   
-  
-
   default_scope :order => '"position" asc'
 
   def self.order ids
