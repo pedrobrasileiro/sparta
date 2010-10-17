@@ -11,6 +11,11 @@ class Ticket < ActiveRecord::Base
       { :id => ids }
     )
   end
+  
+  def assigned_to
+    
+  end
+  
 
 private
 
