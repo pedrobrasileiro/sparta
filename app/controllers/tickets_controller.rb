@@ -14,7 +14,10 @@ class TicketsController < InheritedResources::Base
   end
 
   def create
-    create! do |format|
+    @project = Project.find(params[:project_id])
+    @ticket = @project.tickets.build params[:ticket]
+    @ticket.reporter_id = current_user
+    create! do |format|      
       format.js { render :partial => 'ticket', :locals => { :ticket => @ticket } }
     end
   end
