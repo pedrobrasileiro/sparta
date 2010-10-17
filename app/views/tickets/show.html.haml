@@ -7,9 +7,9 @@
   = @ticket.description
 %p
   %b Assigned_to
-  = @ticket.assigned_to.email
+  = @ticket.assigned_to.try(:email)
 %p
-  %b Reporter_to
+  %b Reporter
   = @ticket.reporter.try(:email)
     
 = link_to 'Edit', edit_project_ticket_path(@project, @ticket)
