@@ -99,12 +99,26 @@ $(function() {
         $(sortingHelper).css({
           top: (ui.item.offset().top + 26) + 'px'
         });
+    },
+
+    update: function(event, ui) {
+      var ul = $(this);
+      setTimeout(function() {
+        $.post(
+          '/projects/1/tickets/sort',
+          ul.sortable('serialize'),
+          null,
+          'json'
+        );
+      }, 0);
     }
   };
 
   $('ul.tickets-list').sortable(sortableOptions).disableSelection();
 
   $('ul.tickets-list').selectable({
+    filter: 'li.ticket',
+    cancel: 'a.delete-ticket,input',
     selected: function(event, ui) {
       var selected = $('.ticket.ui-selected');
       if (selected.length > 1) {
@@ -114,13 +128,25 @@ $(function() {
           $('.columns .column.meta-column').html(html);
         });
       }
-    }    
+    }
   });
 
   $('.drag-mate a').live('click', function() { return false; });
-  
-  
+
+  $('a.add-ticket').bind('ajax:success', function(_, data) {
+    $('.tickets-inbox').prepend(data).find('textarea').focus();
+  });
+
+  $('a.delete-ticket').live('ajax:success', function() {
+    $(this).parents('li.ticket').slideUp(300).remove();
+  });
+
+  $('#new_ticket').live('ajax:success', function(_, data) {
+    console.log(data);
+  });
+
   // Comments
+
   $('#new_comment').live('ajax:success', function(_, data) {
     $(this).siblings('.comments').append(data);
     $(this).find('textarea').val('');

@@ -1,3 +1,5 @@
-- semantic_form_for [@project, @ticket]  do |f|
-  = f.inputs :description
-  = f.buttons
+%li.ticket-form
+  - semantic_form_for [@project, @ticket], :remote => true do |f|
+    - f.inputs do
+      = f.input :description, :label => false
+    = f.buttons
