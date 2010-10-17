@@ -2,7 +2,7 @@
   - if current_user
     - if current_user.projects.count > 0
       - if current_user.projects.count == 1
-        %li.project-name= current_user.projects.first.name
+        %li.project-name= link_to_unless_current current_user.projects.first.name, current_user.projects.first
         %li.button-li.relative-it= link_to 'New project', new_project_path, :remote => true, :class => 'add-project menu-popup menu-popup-window green'
       - else
         %li.button-li.relative-it.drop-down
