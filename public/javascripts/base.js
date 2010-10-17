@@ -1,4 +1,81 @@
 $(function() {
+  var metaPanel = $('.columns .column.meta-column .column-wrapper'),
+      metaPanelContainer = $('.columns .column.meta-column'),
+      metaPanelContent;
+
+  //
+  // Actions
+  //
+
+  // Delete selected tickets
+
+  function deleteSelectedTickets() {
+    if( confirm('You really want to delete selected tickets?') ) {
+      var selected = $('li.ticket.ui-selected');
+      $.post(
+        '/projects/1/tickets/bulk_delete',
+        serializeObjects(selected),
+        null,
+        'json'
+      );
+
+      selected.remove();
+    }
+
+    return false;
+  }
+
+  $(document).bind('keypress', 'd', deleteSelectedTickets);
+
+  // Movements
+
+  function moveCursorUp() {
+    var selected = $('li.ticket.ui-selected:first');
+    $('li.ticket.ui-selected').removeClass('ui-selected');
+    selected.prev('li.ticket').addClass('ui-selected');
+  }
+
+  function moveCursorDown() {
+    var selected = $('li.ticket.ui-selected:first');
+    $('li.ticket.ui-selected').removeClass('ui-selected');
+    selected.next('li.ticket').addClass('ui-selected');
+  }
+
+  $(document).bind('keypress', 'k', moveCursorUp);
+  $(document).bind('keypress', 'j', moveCursorDown);
+
+  // New ticket
+
+  function openNewTicket() {
+    ''
+  }
+
+  $(document).bind('keypress', 'n', openNewTicket);
+
+  function onContentChange() {
+    metaPanel.jScrollPane();
+  }
+
+  function onWindowResize() {
+    metaPanel.height(metaPanelContainer.height() - 40);
+    onContentChange();
+  }
+
+  onWindowResize();
+
+  $(window).resize(onWindowResize);
+
+  metaPanelContent = $('.jspPane', metaPanel);
+
+  function setMetapanelContent(html) {
+    metaPanelContent.html(html);
+    onContentChange();
+  }
+
+  //
+  // Ticket selecteble and sortable
+  //
+
   var sortingHelper = $('#ui-sorting-helper'),
       sortable,
       sortingPosition,
@@ -116,8 +193,6 @@ $(function() {
 
   $('ul.tickets-list').sortable(sortableOptions).disableSelection();
 
-  var metaPanel = $('.columns .column.meta-column .column-wrapper');
-
   $('ul.tickets-list').selectable({
     filter: 'li.ticket',
     cancel: 'a.delete-ticket,input',
@@ -125,10 +200,10 @@ $(function() {
     selected: function(event, ui) {
       var selected = $('.ticket.ui-selected');
       if(selected.length > 1) {
-        metaPanel.html('Goo');
+        setMetapanelContent('Goo');
       } else if (selected.length === 1) {
         $.get($('span.number a', selected).attr('href'), function(html){
-          metaPanel.html(html);
+          setMetapanelContent(html);
         });
       }
     }
@@ -164,65 +239,4 @@ $(function() {
 
     return str.join('&');
   }
-
-  //
-  // Actions
-  //
-
-  // Delete selected tickets
-
-  function deleteSelectedTickets() {
-    if( confirm('You really want to delete selected tickets?') ) {
-      var selected = $('li.ticket.ui-selected');
-      $.post(
-        '/projects/1/tickets/bulk_delete',
-        serializeObjects(selected),
-        null,
-        'json'
-      );
-
-      selected.remove();
-    }
-
-    return false;
-  }
-
-  $(document).bind('keypress', 'd', deleteSelectedTickets);
-
-  // Movements
-
-  function moveCursorUp() {
-    var selected = $('li.ticket.ui-selected:first');
-    $('li.ticket.ui-selected').removeClass('ui-selected');
-    selected.prev('li.ticket').addClass('ui-selected');
-  }
-
-  function moveCursorDown() {
-    var selected = $('li.ticket.ui-selected:first');
-    $('li.ticket.ui-selected').removeClass('ui-selected');
-    selected.next('li.ticket').addClass('ui-selected');
-  }
-
-  $(document).bind('keypress', 'k', moveCursorUp);
-  $(document).bind('keypress', 'j', moveCursorDown);
-
-  // New ticket
-
-  function openNewTicket() {
-    ''
-  }
-
-  $(document).bind('keypress', 'n', openNewTicket);
-
-
-
-  function onResizeWindow() {
-    $('.meta-column .column-wrapper').height($('.meta-column').height() - 40);
-    $('.scroll-pane').jScrollPane();
-  }
-
-  onResizeWindow();
-
-  $(window).resize(onResizeWindow);
-
 });
