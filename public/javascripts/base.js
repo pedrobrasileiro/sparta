@@ -58,7 +58,7 @@ $(function() {
   }
 
   function onWindowResize() {
-    metaPanel.height(metaPanelContainer.height() - 40);
+    metaPanel.height(metaPanelContainer.height() - 127);
     onContentChange();
   }
 
@@ -330,5 +330,9 @@ $(function() {
     if(isSelected) $(ticketId).addClass('ui-selected');
 
     clearMetaPanel();
+  });
+
+  $('select.select-tag').change(function() {
+    window.location = $(this).val();
   });
 });
