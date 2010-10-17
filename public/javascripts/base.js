@@ -266,13 +266,12 @@ $(function() {
   $('.menu-popup.menu-popup-window').bind('ajax:success', function(_, data) {
     popupWindow
       .clone()
-      //.appendTo('body')
-      .ansertAfter($(this))
+      .insertAfter($(this))
       .addClass('green')
       .append(data)
       .css({
-        top: $(this).offset().top,
-        left: $(this).offset().left + $(this).innerWidth(),
+        top: $(this).top(), // $(this).offset().top,
+        left: $(this).innerWidth(), //$(this).offset().left + $(this).innerWidth(),
         margin: '0 0 0 -5px'
       });
   });
