@@ -32,4 +32,9 @@ class TicketsController < InheritedResources::Base
     Ticket.order params[:ticket]
     render :nothing => true
   end
+
+  def bulk_delete
+    Ticket.delete params[:ticket]
+    render :nothing => true
+  end
 end

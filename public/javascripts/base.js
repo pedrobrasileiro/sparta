@@ -146,4 +146,61 @@ $(function() {
     $(this).siblings('.comments').append(data);
     $(this).find('textarea').val('');
   });
+
+  // Serialize
+
+  function serializeObjects(objects) {
+
+    var str = [];
+
+    $(objects).each(function() {
+      var res = $(this).attr('id').match(/(.+)[-=_](.+)/);
+      if(res) str.push((res[1]+'[]')+'='+(res[2]));
+    });
+
+    return str.join('&');
+  }
+
+  console.log(
+    serializeObjects($('li.ticket'))
+  );
+
+  // Hotkeys
+
+  // Delete tickets
+
+  function deleteSelectedTickets() {
+    if( confirm('You really want to delete selected tickets?') ) {
+      var selected = $('li.ticket.ui-selected');
+      $.post(
+        '/projects/1/tickets/bulk_delete',
+        serializeObjects(selected),
+        null,
+        'json'
+      );
+
+      selected.remove();
+    }
+
+    return false;
+  }
+
+  $(document).bind('keypress', 'd', deleteSelectedTickets);
+
+  //
+
+  function moveCursorUp() {
+    var selected = $('li.ticket.ui-selected:first');
+    $('li.ticket.ui-selected').removeClass('ui-selected');
+    selected.prev('li.ticket').addClass('ui-selected');
+  }
+
+  function moveCursorDown() {
+    var selected = $('li.ticket.ui-selected:first');
+    $('li.ticket.ui-selected').removeClass('ui-selected');
+    selected.next('li.ticket').addClass('ui-selected');
+  }
+
+  $(document).bind('keypress', 'k', moveCursorUp);
+  $(document).bind('keypress', 'j', moveCursorDown);
 });
