@@ -478,3 +478,47 @@ ul.tickets-actions
 * html .jspCorner
   margin: 0 -3px 0 0
 
+
+// Ticket show
+
+.ticket-show
+  .ticket
+    position: relative
+
+    .edit-ticket
+      display: block
+      position: absolute
+      top: 0
+      right: 0
+
+    div.number
+      @include border-radius(8px)
+      width: 60px
+      text-align: center
+      color: white
+      padding: 8px
+      float: left
+      p.number
+        @include text-shadow(-1px, 1px, 0, #2C2C2C)
+        font-weight: bold
+      p.status
+        text-transform: uppercase
+        font-size: 9px
+        margin-top: 8px
+        color: #E1E1E1
+
+    .description
+      float: left
+      width: 300px
+      padding-left: 15px
+      line-height: 19px
+
+    .info
+      float: left
+      clear: both
+      margin-top: 10px
+
+#comments
+  margin-top: 20px
+  float: left
+  clear: both

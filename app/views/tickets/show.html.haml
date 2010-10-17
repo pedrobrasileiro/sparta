@@ -1,17 +1,26 @@
-%p#notice= notice
-%p
-  %b Number
-  = @ticket.number
-%p
-  %b Desc:
-  = @ticket.description
-%p
-  %b Assigned_to
-  = @ticket.assigned_to.try(:email)
-%p
-  %b Reporter
-  = @ticket.reporter.try(:email)
-    
-= link_to 'Edit', edit_project_ticket_path(@project, @ticket)
+.ticket-show
+  .ticket
+    = link_to 'Edit', edit_project_ticket_path(@project, @ticket), :class => 'button edit-ticket'
 
-= render :partial => 'comments/list'
+    .number(style="background-color: #{@ticket.status.color}")
+      %p.number
+        = @ticket.number
+      %p.status= @ticket.status.name
+
+    .description= @ticket.description
+
+    .info
+      %dl
+        %dt Created
+        %dd= content_tag(:abbr, I18n.l(@ticket.created_at, :format => :short), :class => 'timeago', :title => @ticket.created_at.iso8601)
+
+        - if @ticket.assigned_to
+          %dt Assigned to
+          %dd= @ticket.assigned_to.email
+
+        - if @ticket.reporter
+          %dt Reported by
+          %dd= @ticket.reporter.email
+
+
+    = render :partial => 'comments/list'
