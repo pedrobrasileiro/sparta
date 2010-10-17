@@ -211,9 +211,9 @@ $(function() {
 
   $('.drag-mate a').live('click', function() { return false; });
 
-  $('a.add-ticket').bind('ajax:success', function(_, data) {
-    metaPanel.html(data).find('textarea').focus();
-  });
+  //$('a.add-ticket').bind('ajax:success', function(_, data) {
+    //metaPanel.html(data).find('textarea').focus();
+  //});
 
   $('a.delete-ticket').live('ajax:success', function() {
     $(this).parents('li.ticket').slideUp(300).remove();
@@ -270,12 +270,14 @@ $(function() {
       .clone()
       .insertAfter($(this))
       .append(data)
-      .addClass($(this).is('.green') ? 'green' : '')
       .css({
         top: 0,
         left: $(this).innerWidth(),
         marginLeft: '-5px'
       });
+
+    if($(this).is('.green')) newPopup.addClass('green');
+    if($(this).is('.bright-green')) newPopup.addClass('bright-green');
 
     $(this).one('click', function() {
       newPopup.remove();
@@ -291,5 +293,13 @@ $(function() {
 
   $('#new_user, .sign-out').live('ajax:success', function() {
     window.location = '/';
+  });
+
+  //
+
+  $('#new_ticket').live('ajax:success', function(_, data) {
+    $(this).parents('.popup-window').remove();
+
+    $('.tickets-list:first').append(data);
   });
 });

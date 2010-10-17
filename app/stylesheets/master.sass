@@ -115,6 +115,8 @@ body#ui #logo a.ribbon
   font-size: 18px
   &.green
     background: #E9F5B6
+  &.bright-green
+    background: #B6E15B
   img
     margin-left: 2px
     vertical-align: middle
@@ -127,7 +129,9 @@ body#ui #logo a.ribbon
   background: #E1E1E1
   padding: 10px 15px
   &.green
-    background: #E9F5B6
+    background: #DAFB9F
+  &.bright-green
+    background: #B6E15B
 
   form
     label
@@ -149,7 +153,17 @@ body#ui #logo a.ribbon
         padding: 2px 3px
         font-size: 15px
         width: 300px
+    li.select
+      label
+        display: inline-block
+        width: 100px
+        text-align: right
+        margin-right: 10px
 
+  form#new_ticket
+    textarea
+      width: 400px
+      height: 40px
 
 body#page #navigation
   margin: 35px 0 0 350px
@@ -250,7 +264,7 @@ li.ticket
     a
       color: white
       text-decoration: none
-  
+
   .type
     @include border-radius(3px)
     @include text-shadow(-1px, 1px, 0, black)
@@ -303,7 +317,6 @@ li.ticket
   color: white
 
 .columns
-  overflow: hidden
   padding-right: 500px
   .column
     float: left
@@ -313,10 +326,9 @@ li.ticket
       padding: 25px 20px 15px
   .meta-column
     width: 500px
+    overflow: hidden
 
 ul.tickets-actions
-  overflow: hidden
-  margin: 0 0 40px 0
   li
     float: right
 

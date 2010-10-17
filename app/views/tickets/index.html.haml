@@ -2,7 +2,7 @@
   var projectId = #{@project.id};
 
 %ul.tickets-actions
-  %li= link_to 'Add an new ticket'.html_safe, new_project_ticket_path, :remote => true, :class => 'button green add-ticket'
+  %li.relative-it= link_to 'Add an new ticket'.html_safe, new_project_ticket_path, :remote => true, :class => 'button green add-ticket menu-popup menu-popup-window bright-green'
 
 .tickets-inbox
 
