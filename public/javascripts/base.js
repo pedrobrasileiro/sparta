@@ -406,4 +406,6 @@ $(function() {
     $(this).find('li.string input').val('');
     $('#project-users ul').append(_, data)
   });
+
+  $('#loading').loading();
 });
