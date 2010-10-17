@@ -185,6 +185,22 @@ $(function() {
     return false;
   }
 
-  $(document).bind('keydown', 'del',       deleteSelectedTickets);
-  $(document).bind('keydown', 'backspace', deleteSelectedTickets);
+  $(document).bind('keypress', 'd', deleteSelectedTickets);
+
+  //
+
+  function moveCursorUp() {
+    var selected = $('li.ticket.ui-selected:first');
+    $('li.ticket.ui-selected').removeClass('ui-selected');
+    selected.prev('li.ticket').addClass('ui-selected');
+  }
+
+  function moveCursorDown() {
+    var selected = $('li.ticket.ui-selected:first');
+    $('li.ticket.ui-selected').removeClass('ui-selected');
+    selected.next('li.ticket').addClass('ui-selected');
+  }
+
+  $(document).bind('keypress', 'k', moveCursorUp);
+  $(document).bind('keypress', 'j', moveCursorDown);
 });
