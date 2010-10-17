@@ -247,7 +247,6 @@ li.ticket
     .description
       color: white
 
-
   //
 
   .number-container
@@ -267,7 +266,6 @@ li.ticket
       text-decoration: none
 
   .labels
-    margin-left: 10px
     span
       @include border-radius(3px)
       padding: 3px
@@ -578,6 +576,29 @@ ul.tickets-actions
     font-size: 18px
     color: #999
     margin-bottom: 8px
+
+  ul.comments
+    overflow: hidden
+
+  li.comment
+    float: left
+    clear: both
+    margin-bottom: 6px
+    .user, .body
+      float: left
+    .user
+      width: 32px
+      img
+        width: 32px
+    .body
+      width: 390px
+      margin-left: 10px
+      .head
+        font-size: 12px
+        color: #999
+        margin-bottom: 3px
+      .time
+        color: #CCC
 
   form
     img

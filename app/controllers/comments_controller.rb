@@ -13,7 +13,7 @@ class CommentsController < InheritedResources::Base
 
   def create
     super do |format|
-      current_user.comments << @comment
+      current_user.comments << resource
       format.js { render :template => 'comments/show', :layout => false }
     end
   end
