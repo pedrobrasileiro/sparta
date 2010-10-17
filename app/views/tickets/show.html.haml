@@ -1,7 +1,6 @@
 .ticket-show
   .ticket
-    = link_to 'Edit', edit_project_ticket_path(@project, @ticket), :class => 'button edit-ticket'
-    = link_to image_tag('trash.gif'), [@project, @ticket], :class => 'delete-ticket', :confirm => 'You are really want to delete this ticket?', :method => :delete, :remote => true
+    = link_to 'Edit', edit_project_ticket_path(@project, @ticket), :remote => true, :class => 'button edit-ticket'
 
     .number-and-type
       .number(style="background-color: #{@ticket.status.color}")
@@ -33,7 +32,7 @@
 
         - if @ticket.tag_list.present?
           %dt Tags
-          %dd 
+          %dd
             - @ticket.tag_list.each do |tag|
               = link_to tag, project_tickets_path + "?tags=#{tag}"
 
