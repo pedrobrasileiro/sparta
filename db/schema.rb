@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101016192226) do
+ActiveRecord::Schema.define(:version => 20101017050046) do
 
   create_table "comments", :force => true do |t|
     t.text     "body"
@@ -50,6 +50,8 @@ ActiveRecord::Schema.define(:version => 20101016192226) do
     t.integer  "project_id"
     t.integer  "number"
     t.integer  "position"
+    t.integer  "reporter_id"
+    t.integer  "assigned_to_id"
   end
 
   create_table "users", :force => true do |t|
