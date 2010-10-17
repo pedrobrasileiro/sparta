@@ -270,9 +270,9 @@ $(function() {
       .addClass('green')
       .append(data)
       .css({
-        top: $(this).top(), // $(this).offset().top,
-        left: $(this).innerWidth(), //$(this).offset().left + $(this).innerWidth(),
-        margin: '0 0 0 -5px'
+        top: $(this).offset().top - $(this).innerHeight(),
+        left: $(this).innerWidth(),
+        margin: ($.browser.webkit ? '12' : '10') + 'px 0 0 -5px'
       });
   });
 
