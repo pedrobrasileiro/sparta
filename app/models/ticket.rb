@@ -15,6 +15,8 @@ class Ticket < ActiveRecord::Base
   default_scope :order => '"position" asc', :conditions => { :closed => false }
   
   acts_as_taggable
+  
+  #validates :description, :presence => true
 
   def self.order ids
     update_all(
