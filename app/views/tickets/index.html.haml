@@ -2,18 +2,41 @@
   var projectId = #{@project.id};
 
 %ul.tickets-actions
-  %li.relative-it= link_to 'Add an new ticket'.html_safe, new_project_ticket_path, :remote => true, :class => 'button green add-ticket menu-popup menu-popup-window bright-green'
+  %li.relative-it= link_to 'Add a new ticket'.html_safe, new_project_ticket_path, :remote => true, :class => 'button green add-ticket menu-popup menu-popup-window bright-green'
 
 .tickets-lists
-  - if @tags
-    %h3.tickets-header
-      Tags:
-      = @tags
-  - else
-    %h3.tickets-header All Tickets
 
+- if @tickets.class == Hash
+  - if @tickets[:both]
+    %h3.tickets-header= @tickets[:both][0]
+  
+    %ul.tickets-list
+      - @tickets[:both][1].each do |ticket|
+        = render ticket
+
+  - if @tickets[:other]
+    - @tickets[:other].each do |ticket|
+      - unless ticket[1].empty?
+        %h3.tickets-header= ticket[0]
+  
+        %ul.tickets-list
+          - ticket[1].each do |t|
+            = render t
+          
+- if @tickets.class == Array
+  %h3.tickets-header All Tickets
+  
   %ul.tickets-list
     - @tickets.each do |ticket|
       = render ticket
 
-  %ul#ui-sorting-helper.tickets-list
+%ul#ui-sorting-helper.tickets-list
+
+- content_for :meta_footer do
+  %form{:id => 'tags_search', :method => 'get', :action => project_tickets_path}
+    %input{:name => 'tags', :placeholder => 'first_tag,second_tag'}
+    %input{:type => 'button', :value => 'Show'}
+  tags:
+  - @tags.each do |tag|
+    = link_to tag.name, project_tickets_path + "?tags=#{tag.name}"    
+  

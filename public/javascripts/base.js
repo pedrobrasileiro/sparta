@@ -310,4 +310,6 @@ $(function() {
   $('.edit-ticket').live('ajax:success', function(_, data) {
     setMetapanelContent(data);
   });
+
+  $("[placeholder]").textPlaceholder();
 });
