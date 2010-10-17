@@ -264,19 +264,32 @@ $(function() {
   var popupWindow = $('<div class="popup-window"></div>');
 
   $('.menu-popup.menu-popup-window').bind('ajax:success', function(_, data) {
-    popupWindow
+    $('.popup-window').remove();
+
+    newPopup = popupWindow
       .clone()
       .insertAfter($(this))
-      .addClass('green')
       .append(data)
+      .addClass($(this).is('.green') ? 'green' : '')
       .css({
         top: 0,
         left: $(this).innerWidth(),
         marginLeft: '-5px'
       });
+
+    $(this).one('click', function() {
+      newPopup.remove();
+      return false;
+    })
   });
 
   $('#new_project').live('ajax:success', function(_, data) {
     window.location = data;
+  });
+
+  // Sign in / up / out
+
+  $('.sign-out').bind('ajax:success', function() {
+    window.location = '/';
   });
 });

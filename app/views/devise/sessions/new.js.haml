@@ -1,0 +1,4 @@
+- semantic_form_for resource, :url => session_path(resource_name), :remote => true do |f|
+  = f.inputs :email, :password
+  - f.buttons do
+    = f.commit_button
