@@ -6,15 +6,26 @@
 
 .tickets-inbox
 
-- if @tags
-  %h3.tickets-header
-    Tags:
-    = @tags
-- else 
-  %h3.tickets-header All Tickets
-
-%ul.tickets-list
+- if @tickets[0].class == Array
   - @tickets.each do |ticket|
-    = render ticket
+    - unless ticket[1].empty?
+      %h3.tickets-header= ticket[0]
+    
+      %ul.tickets-list
+        - ticket[1].each do |t|
+          = render t
+- else
+  %h3.tickets-header All Tickets
+  
+  %ul.tickets-list
+    - @tickets.each do |ticket|
+      = render ticket
 
 %ul#ui-sorting-helper.tickets-list
+
+- content_for :meta_footer do
+  tags:
+  - @tags.each do |tag|
+    = link_to tag.name, project_tickets_path + "?tags=#{tag.name}"    
+  
+

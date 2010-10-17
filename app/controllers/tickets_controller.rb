@@ -6,9 +6,11 @@ class TicketsController < InheritedResources::Base
   
   def index
     @project = Project.find(params[:project_id])
+    @tags = Ticket.tag_counts_on(:tags)
     if params[:tags]
-      @tags = params[:tags].split(',').map(&:capitalize).join(', ')
-      @tickets = @project.tickets.tagged_with(params[:tags].split(','), :any => true)
+      @tickets = params[:tags].split(',').map do |tag|
+        [tag.capitalize, @project.tickets.tagged_with(tag)]
+      end
     else
       @tickets = @project.tickets
     end
