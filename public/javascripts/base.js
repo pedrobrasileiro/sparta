@@ -73,6 +73,12 @@ $(function() {
     onContentChange();
   }
 
+
+  function clearMetaPanel() {
+    metaPanelContent.html('');
+    onContentChange();
+  }
+
   //
   // Ticket selecteble and sortable
   //
@@ -312,4 +318,17 @@ $(function() {
   });
 
   $("[placeholder]").textPlaceholder();
+
+  $('form.formtastic.edit.ticket').live('ajax:success', function(_, data) {
+    var ticketId   = '#' + data.match(/id="(ticket_\d+)"/)[1],
+        oldTicket  = $(ticketId),
+        isSelected = oldTicket.is('.ui-selected');
+
+    console.log(isSelected);
+
+    oldTicket.replaceWith(data);
+    if(isSelected) $(ticketId).addClass('ui-selected');
+
+    clearMetaPanel();
+  });
 });
