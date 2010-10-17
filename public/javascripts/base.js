@@ -344,7 +344,7 @@ $(function() {
 
   // Sign in / up / out
 
-  $('#new_user, .sign-out').live('ajax:success', function() {
+  $('#new_user:not(.add-user-form), .sign-out').live('ajax:success', function() {
     window.location = '/';
   });
 
@@ -402,7 +402,8 @@ $(function() {
     $(this).parents('li').remove();
   })
 
-  $('form.add-user-form').live('ajax:success', function() {
-    $(this).find('input').val('');
+  $('form.add-user-form').live('ajax:success', function(_, data) {
+    $(this).find('li.string input').val('');
+    $('#project-users ul').append(_, data)
   });
 });
