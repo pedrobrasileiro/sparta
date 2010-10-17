@@ -141,6 +141,10 @@ $(function() {
     $(this).parents('li.ticket').slideUp(300).remove();
   });
 
+  $('#new_ticket').live('ajax:success', function(_, data) {
+    console.log(data);
+  });
+
   // Comments
 
   $('#new_comment').live('ajax:success', function(_, data) {

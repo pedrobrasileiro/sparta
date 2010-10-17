@@ -13,6 +13,12 @@ class TicketsController < InheritedResources::Base
     end
   end
 
+  def create
+    create! do |format|
+      format.js { render :partial => 'ticket', :locals => { :ticket => @ticket } }
+    end
+  end
+
   def destroy
     destroy! do |format|
       format.js { render :nothing => true }

@@ -16,7 +16,7 @@ private
 
   def numbering_ticket
     self.number = if self.project.tickets(true).size > 0
-      self.project.tickets.last.number + 1
+      self.project.tickets.maximum('number') + 1
     else
       1
     end
