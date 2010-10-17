@@ -1,8 +1,12 @@
 #project-users
+  %h4 Users who have access:
+
   %ul
     = render :partial => 'user', :collection => @users
 
-  Add user:
+  %h4 Add user
+
   - semantic_form_for [@project, @user], :url => project_project_users_path, :html => { :class => 'add-user-form' }, :remote => true do |f|
-    = f.inputs :email
-    = f.submit 'Add User'
+    - f.inputs do
+      = f.input :email, :label => 'User emal:'
+    = f.submit 'Add user to project'
