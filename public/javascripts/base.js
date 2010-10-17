@@ -118,6 +118,7 @@ $(function() {
 
   $('ul.tickets-list').selectable({
     filter: 'li.ticket',
+    cancel: 'a.delete-ticket,input',
     selected: function(event, ui) {
       var selected = $('.ticket.ui-selected');
       if (selected.length > 1) {
@@ -133,9 +134,12 @@ $(function() {
   $('.drag-mate a').live('click', function() { return false; });
 
   $('a.add-ticket').bind('ajax:success', function(_, data) {
-    $('.tickets-list.inbox').prepend(
-      data
-    );
+    $('.tickets-inbox').prepend(data).find('textarea').focus();
+  });
+
+  $('a.delete-ticket').live('ajax:success', function() {
+    $(this).parents('li.ticket').slideUp(300).remove();
+  });
 
   // Comments
 

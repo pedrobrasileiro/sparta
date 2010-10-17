@@ -1,9 +1,7 @@
 %ul.tickets-actions
-  %li= link_to 'Add an new ticket <span class="shortcut">(⌘+⌥+N)</span>'.html_safe, new_project_ticket_path, :remote => true, :class => 'button green add-ticket'
+  %li= link_to 'Add an new ticket'.html_safe, new_project_ticket_path, :remote => true, :class => 'button green add-ticket'
 
-%h3.tickets-header Inbox
-
-%ul.tickets-list.inbox
+.tickets-inbox
 
 %h3.tickets-header Dummy
 
@@ -15,6 +13,6 @@
         %span.number= link_to "##{ticket.number}", [@project, ticket]
       %span.description= ticket.description
       %span.buttons
-        = link_to image_tag('trash.gif'), '#', :method => :destroy, :remote => true
+        = link_to image_tag('trash.gif'), [@project, ticket], :class => 'delete-ticket', :confirm => 'You are really want to delete this ticket?', :method => :delete, :remote => true
 
 %ul#ui-sorting-helper.tickets-list

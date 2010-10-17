@@ -13,6 +13,12 @@ class TicketsController < InheritedResources::Base
     end
   end
 
+  def destroy
+    destroy! do |format|
+      format.js { render :nothing => true }
+    end
+  end
+
   def sort
     Ticket.order params[:ticket]
     render :nothing => true
