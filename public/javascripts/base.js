@@ -119,13 +119,14 @@ $(function() {
   $('ul.tickets-list').selectable({
     filter: 'li.ticket',
     cancel: 'a.delete-ticket,input',
+
     selected: function(event, ui) {
       var selected = $('.ticket.ui-selected');
-      if (selected.length > 1) {
+      if(selected.length > 1) {
         $('.columns .column.meta-column').html('Goo');
       } else if (selected.length === 1) {
         $.get($('span.number a', selected).attr('href'), function(html){
-          $('.columns .column.meta-column').html(html);
+          $('.columns .column.meta-column .column-wrapper').html(html);
         });
       }
     }
@@ -165,9 +166,11 @@ $(function() {
     serializeObjects($('li.ticket'))
   );
 
-  // Hotkeys
+  //
+  // Actions
+  //
 
-  // Delete tickets
+  // Delete selected tickets
 
   function deleteSelectedTickets() {
     if( confirm('You really want to delete selected tickets?') ) {
@@ -187,7 +190,7 @@ $(function() {
 
   $(document).bind('keypress', 'd', deleteSelectedTickets);
 
-  //
+  // Movements
 
   function moveCursorUp() {
     var selected = $('li.ticket.ui-selected:first');
@@ -203,4 +206,12 @@ $(function() {
 
   $(document).bind('keypress', 'k', moveCursorUp);
   $(document).bind('keypress', 'j', moveCursorDown);
+
+  // New ticket
+
+  function openNewTicket() {
+    ''
+  }
+
+  $(document).bind('keypress', 'n', openNewTicket);
 });
