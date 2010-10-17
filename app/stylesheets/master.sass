@@ -176,6 +176,8 @@ li.ticket
 
   .delete-ticket
     height: 13px
+    display: inline-block
+    vertical-align: top
 
 #ui-sorting-helper
   position: absolute
@@ -198,11 +200,10 @@ li.ticket
     float: left
   .main-column
     width: 100%
+    .column-wrapper
+      padding: 25px 20px 15px
   .meta-column
     width: 500px
-
-.column-wrapper
-  padding: 25px 20px 15px
 
 ul.tickets-actions
   overflow: hidden
@@ -218,9 +219,10 @@ ul.tickets-actions
   right: 0
 
   .column-wrapper
+    padding: 10px 20px
     overflow: auto
     margin: 20px 0
-    width: 400px
+    width: 450px
     height: 200px
 
 // Promo
