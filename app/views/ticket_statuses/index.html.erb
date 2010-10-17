@@ -1,0 +1,27 @@
+<h1>Listing ticket_statuses</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Color</th>
+    <th>Close</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @ticket_statuses.each do |ticket_status| %>
+  <tr>
+    <td><%= ticket_status.name %></td>
+    <td><%= ticket_status.color %></td>
+    <td><%= ticket_status.close %></td>
+    <td><%= link_to 'Show', ticket_status %></td>
+    <td><%= link_to 'Edit', edit_ticket_status_path(ticket_status) %></td>
+    <td><%= link_to 'Destroy', ticket_status, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Ticket status', new_ticket_status_path %>

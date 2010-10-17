@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @ticket_status.name %>
+</p>
+
+<p>
+  <b>Color:</b>
+  <%= @ticket_status.color %>
+</p>
+
+<p>
+  <b>Close:</b>
+  <%= @ticket_status.close %>
+</p>
+
+
+<%= link_to 'Edit', edit_ticket_status_path(@ticket_status) %> |
+<%= link_to 'Back', ticket_statuses_path %>
