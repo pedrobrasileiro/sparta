@@ -1,26 +1,35 @@
 .ticket-show
   .ticket
     = link_to 'Edit', edit_project_ticket_path(@project, @ticket), :class => 'button edit-ticket'
+    = link_to image_tag('trash.gif'), [@project, @ticket], :class => 'delete-ticket', :confirm => 'You are really want to delete this ticket?', :method => :delete, :remote => true
 
-    .number(style="background-color: #{@ticket.status.color}")
-      %p.number
-        = @ticket.number
-      %p.status= @ticket.status.name
+    .number-and-type
+      .number(style="background-color: #{@ticket.status.color}")
+        %p.number ##{@ticket.number}
+        %p.status= @ticket.status.name
+
+      - if @ticket.type
+        .type
+          %span(style="background-color: #{@ticket.type.color}")= @ticket.type.name
 
     .description= @ticket.description
 
     .info
       %dl
-        %dt Created
+        %dt Created:
         %dd= content_tag(:abbr, I18n.l(@ticket.created_at, :format => :short), :class => 'timeago', :title => @ticket.created_at.iso8601)
 
         - if @ticket.assigned_to.present?
-          %dt Assigned to
-          %dd= @ticket.assigned_to.email
+          %dt Assigned to:
+          %dd
+            = image_tag(@ticket.assigned_to.gravatar_url.html_safe, :alt => '')
+            = @ticket.assigned_to.email
 
         - if @ticket.reporter.present?
-          %dt Reported by
-          %dd= @ticket.reporter.email
+          %dt Reported by:
+          %dd
+            = image_tag(@ticket.reporter.gravatar_url.html_safe, :alt => '')
+            = @ticket.reporter.email
 
         - if @ticket.tag_list.present?
           %dt Tags

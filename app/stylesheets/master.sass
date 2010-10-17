@@ -485,19 +485,29 @@ ul.tickets-actions
   .ticket
     position: relative
 
-    .edit-ticket
+    .edit-ticket, .delete-ticket
       display: block
       position: absolute
       top: 0
       right: 0
 
-    div.number
-      @include border-radius(8px)
+    .edit-ticket
+      right: 15px
+
+    .number-and-type
+      width: 76px
+      float: left
+      margin-bottom: 8px
+
+    div.number, div.type
       width: 60px
       text-align: center
       color: white
-      padding: 8px
       float: left
+
+    div.number
+      @include border-radius(8px)
+      padding: 8px
       p.number
         @include text-shadow(-1px, 1px, 0, #2C2C2C)
         font-weight: bold
@@ -506,6 +516,16 @@ ul.tickets-actions
         font-size: 9px
         margin-top: 8px
         color: #E1E1E1
+
+    div.type
+      @include text-shadow(-1px, 1px, 0, #2C2C2C)
+      font-size: 12px
+      text-align: center
+      margin-top: 8px
+      width: 76px
+      span
+        @include border-radius(4px)
+        padding: 3px 5px
 
     .description
       float: left
@@ -518,7 +538,51 @@ ul.tickets-actions
       clear: both
       margin-top: 10px
 
+    dl
+      font-size: 14px
+      dt, dd
+        float: left
+        margin-bottom: 3px
+      dt
+        width: 100px
+        clear: left
+        text-align: right
+        color: #999
+        padding-right: 6px
+      dd
+        width: 200px
+        clear: right
+        img
+          width: 12px
+          vertical-align: middle
+
 #comments
   margin-top: 20px
   float: left
   clear: both
+  width: 100%
+
+  h4
+    font-size: 18px
+    color: #999
+    margin-bottom: 8px
+
+  form
+    img
+      width: 32px
+
+    fieldset.inputs
+      li
+        float: left
+
+  textarea
+    width: 390px
+    height: 50px
+    margin: 0 0 0 10px
+
+  li.commit
+    float: none
+    clear: both
+    padding: 3px 6px
+    margin: 10px 0 0 0
+    background: #DEDEDE

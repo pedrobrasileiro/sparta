@@ -1,2 +1,5 @@
 %li
-  %p= resource.body
+  .user
+    = image_tag(resource.user.gravatar_url.html_safe, :alt => '')
+  .body
+    %p= resource.body

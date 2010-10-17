@@ -1,7 +1,11 @@
 #comments
+  %h4 Comments
   %ul.comments
     - @comments.each do |comment|
       %li
-        %p= comment.body
+        .user
+          = image_tag(comment.user.gravatar_url.html_safe, :alt => '')
+        .body
+          %p= comment.body
 
   = render :partial => 'comments/form'

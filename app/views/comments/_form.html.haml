@@ -1,3 +1,6 @@
 - semantic_form_for [@project, @ticket, @comment], :remote => true do |f|
-  = f.inputs :body
+  - f.inputs do
+    %li.user
+      = image_tag(current_user.gravatar_url.html_safe, :alt => '')
+    = f.input :body, :label => false
   = f.buttons
