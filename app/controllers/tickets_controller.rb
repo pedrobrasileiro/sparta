@@ -6,6 +6,8 @@ class TicketsController < InheritedResources::Base
   
   def index
     @project = Project.find(params[:project_id])
+    @ticket = @project.tickets.new
+    
     @tags = Ticket.tag_counts_on(:tags)
     if params[:tags]
       @tickets = {}
@@ -51,5 +53,9 @@ class TicketsController < InheritedResources::Base
   def bulk_delete
     Ticket.delete params[:ticket]
     render :nothing => true
+  end
+    
+  def bulk_update
+    
   end
 end

@@ -38,5 +38,17 @@
     %input{:type => 'button', :value => 'Show'}
   tags:
   - @tags.each do |tag|
-    = link_to tag.name, project_tickets_path + "?tags=#{tag.name}"    
+    = link_to tag.name, project_tickets_path + "?tags=#{tag.name}" 
+    
+#ticket-template
+  Edit Tickets
+  - semantic_form_for [@project, @ticket], :url => bulk_update_project_tickets_path  do |f|
+    - f.inputs do
+      -#= f.input :description
+      -#= f.input :tag_list
+      = f.input :assigned_to, :collection => @project.users.map {|user| [user.email, user.id]}
+      = f.input :status, :collection => @project.ticket_statuses.map {|status| [status.name, status.id]}
+      = f.input :type, :collection => @project.ticket_types.map {|type| [type.name, type.id]}
+    = f.buttons
+     
   
