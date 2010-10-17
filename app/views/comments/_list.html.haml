@@ -1,7 +1,8 @@
 #comments
+  %h4 Comments
   %ul.comments
     - @comments.each do |comment|
-      %li
+      %li.user
         %p= comment.body
 
   = render :partial => 'comments/form'

@@ -204,6 +204,7 @@ $(function() {
       } else if (selected.length === 1) {
         $.get($('span.number a', selected).attr('href'), function(html){
           setMetapanelContent(html);
+          $('abbr.timeago').timeago();
         });
       }
     }
