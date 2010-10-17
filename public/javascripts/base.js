@@ -147,13 +147,39 @@ $(function() {
     $(this).find('textarea').val('');
   });
 
+  // Serialize
+
+  function serializeObjects(objects) {
+
+    var str = [];
+
+    $(objects).each(function() {
+      var res = $(this).attr('id').match(/(.+)[-=_](.+)/);
+      if(res) str.push((res[1]+'[]')+'='+(res[2]));
+    });
+
+    return str.join('&');
+  }
+
+  console.log(
+    serializeObjects($('li.ticket'))
+  );
+
   // Hotkeys
 
   // Delete tickets
 
   function deleteSelectedTickets() {
-    if(confirm('You really want to delete selected tickets?')) {
+    if( confirm('You really want to delete selected tickets?') ) {
+      var selected = $('li.ticket.ui-selected');
+      $.post(
+        '/projects/1/tickets/bulk_delete',
+        serializeObjects(selected),
+        null,
+        'json'
+      );
 
+      selected.remove();
     }
 
     return false;
