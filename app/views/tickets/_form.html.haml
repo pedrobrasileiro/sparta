@@ -4,4 +4,5 @@
       = f.input :description, :label => false
       = f.select :assigned_to_id, @project.users.map {|user| [user.email, user.id]}
       = f.select :status_id, @project.ticket_statuses.map {|status| [status.name, status.id]}
+      = f.select :type_id, @project.ticket_types.map {|type| [type.name, type.id]}
     = f.buttons
