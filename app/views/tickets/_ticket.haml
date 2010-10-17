@@ -4,4 +4,5 @@
     %span.number= link_to "##{ticket.number}", [@project, ticket]
   %span.description= ticket.description
   %span.buttons
+    = link_to 'Edit', [@project, ticket], :class => 'edit-ticket'
     = link_to image_tag('trash.gif'), [@project, ticket], :class => 'delete-ticket', :confirm => 'You are really want to delete this ticket?', :method => :delete, :remote => true
