@@ -54,12 +54,65 @@ body#ui #logo a.ribbon
   a
     @include text-shadow(white, -1px, 1px, 0)
     color: #262626
+  li
+    float: left
+    margin-right: 25px
+    &.drop-down
+      //position: relative
+      ul
+        @include border-right-radius(4px)
+        @include border-bottom-left-radius(4px)
+        position: absolute
+        display: none
+        overflow: hidden
+        background: #C1C1C1
+        li
+          display: block
+          margin: 0
+          padding: 0
+          clear: both
+          float: none
+          border-top: 1px solid #E8E8E8
+          a
+            @include border-radius(0)
+            @include text-shadow(none)
+            background: none
+            display: block
+            margin: 0
+            font-size: 14px
+            &:hover
+              background: #FBFCE0
+            &.add-project
+              @include text-shadow(white, -1px, 1px, 0)
+              background: #DAFB9F
+              text-align: center
+              color: #3D511A
+          &:first-child
+            border-top: none
+            a
+              @include border-top-right-radius(4px)
+          &:last-child
+            border-top: none
+            a
+              @include border-bottom-radius(4px)
+      a
+        @include border-radius(4px)
+        text-decoration: none
+        display: inline-block
+        margin-top: -9px
+        background: #E1E1E1
+        padding: 6px 18px
+        font-size: 18px
+        img
+          margin-left: 2px
+          vertical-align: middle
 
 body#page #navigation
   margin: 35px 0 0 350px
 
 body#ui #navigation
-  margin: 15px 0 0 140px
+  position: absolute
+  margin: 27px 0 0 150px
 
 // Footer
 

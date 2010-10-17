@@ -3,6 +3,18 @@
     .column.main-column
       #logo
         = link_to '', root_path, :class => 'ribbon'
+      %ul#navigation
+        %li.drop-down
+          = link_to "#{@project.name} #{image_tag('drop.gif')}".html_safe, '#', :class => 'select-project'
+          %ul
+            %li= link_to 'Other project name', '#'
+            %li= link_to 'Trololo', '#'
+            %li= link_to 'Asd asd', '#'
+            %li= link_to 'Add an new', '#', :class => 'add-project'
+        %li= link_to 'Tickets', '#'
+        %li= link_to 'People', '#'
+        %li= link_to 'Settings', '#'
+
       .column-wrapper
         = yield
     .column.meta-column
