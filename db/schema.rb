@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101017102258) do
+ActiveRecord::Schema.define(:version => 20101017134936) do
 
   create_table "comments", :force => true do |t|
     t.text     "body"
@@ -32,18 +32,6 @@ ActiveRecord::Schema.define(:version => 20101017102258) do
     t.integer "project_id"
   end
 
-  create_table "slugs", :force => true do |t|
-    t.string   "name"
-    t.integer  "sluggable_id"
-    t.integer  "sequence",                     :default => 1, :null => false
-    t.string   "sluggable_type", :limit => 40
-    t.string   "scope"
-    t.datetime "created_at"
-  end
-
-  add_index "slugs", ["name", "sluggable_type", "sequence", "scope"], :name => "index_slugs_on_n_s_s_and_s", :unique => true
-  add_index "slugs", ["sluggable_id"], :name => "index_slugs_on_sluggable_id"
-
   create_table "ticket_statuses", :force => true do |t|
     t.string   "name"
     t.string   "color"
@@ -62,7 +50,7 @@ ActiveRecord::Schema.define(:version => 20101017102258) do
     t.integer  "position"
     t.integer  "reporter_id"
     t.integer  "assigned_to_id"
-    t.boolean  "closed"
+    t.boolean  "closed",         :default => false
     t.integer  "status_id"
   end
 
