@@ -57,20 +57,21 @@ body#ui #logo a.ribbon
   a
     @include text-shadow(white, -1px, 1px, 0)
     color: #262626
+    font-size: 14px
   li
     float: left
     margin-right: 25px
     &.button-li
-      margin-top: -6px
+      margin-top: -3px
     &.drop-down
       //position: relative
       ul
-        @include border-right-radius(4px)
-        @include border-bottom-left-radius(4px)
+        @include border-right-radius(6px)
+        @include border-bottom-left-radius(6px)
         position: absolute
         display: none
-        background: #C1C1C1
-        width: 170px
+        background: #D9D9D9
+        width: 190px
         li
           display: block
           margin: 0
@@ -80,14 +81,14 @@ body#ui #logo a.ribbon
           border-top: 1px solid #E8E8E8
           a
             @include border-radius(0)
-            @include text-shadow(none)
+            //@include text-shadow(none)
             text-align: center
             text-decoration: none
             background: none
             display: block
             margin: 0
-            font-size: 16px
-            padding: 7px 15px
+            font-size: 13px
+            padding: 6px 10px 7px
             &:hover
               background: #FBFCE0
             &.add-project
@@ -113,7 +114,7 @@ body#ui #logo a.ribbon
   padding: 6px 18px 6px 18px
   font-size: 18px
   &.green
-    background: #DAFB9F
+    background: #E9F5B6
   img
     margin-left: 2px
     vertical-align: middle
@@ -126,12 +127,12 @@ body#ui #logo a.ribbon
   background: #E1E1E1
   padding: 10px 15px
   &.green
-    background: #DAFB9F
+    background: #E9F5B6
 
   form
     label
       display: block
-      color: #737373
+      color: #414141
       font-size: 14px
       margin-bottom: 3px
     li
@@ -143,7 +144,7 @@ body#ui #logo a.ribbon
       margin: 0 !important
       border-top: 1px solid #F2F2F2
       padding-top: 8px !important
-    li.string
+    li.string, li.password
       input
         padding: 2px 3px
         font-size: 15px

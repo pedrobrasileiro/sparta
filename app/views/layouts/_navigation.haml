@@ -1,0 +1,27 @@
+%ul#navigation
+  - if current_user
+    - if current_user.projects.count > 0
+      - if current_user.projects.count == 1
+        %li.project-name= current_user.projects.first.name
+        %li.button-li.relative-it= link_to 'New project', new_project_path, :remote => true, :class => 'add-project menu-popup menu-popup-window green'
+      - else
+        %li.button-li.relative-it.drop-down
+          = link_to "#{@project ? @project.name : 'Select project'} #{image_tag('drop.gif')}".html_safe, '#', :class => 'select-project menu-popup'
+          %ul
+            - current_user.projects.each do |project|
+              - unless @project and project == @project
+                %li= link_to project.name, project
+            %li.relative-it= link_to 'Add an new', new_project_path, :remote => true, :class => 'add-project menu-popup menu-popup-window green'
+    - else
+      %li.button-li.relative-it= link_to 'New project', new_project_path, :remote => true, :class => 'add-project menu-popup menu-popup-window green'
+
+    - if @project && !@project.new_record?
+      %li= link_to 'Tickets', @project
+      %li= link_to 'People', project_project_users_path(@project)
+      %li= link_to 'Settings', edit_project_path(@project)
+
+    %li= link_to 'Sign out', destroy_user_session_path, :remote => true, :class => 'sign-out'
+
+  - else
+    %li.button-li.relative-it= link_to 'Sign up', new_user_registration_path, :remote => true, :class => 'add-project menu-popup menu-popup-window green'
+    %li.button-li.relative-it= link_to 'Sign in', new_user_session_path, :remote => true, :class => 'add-project menu-popup menu-popup-window'
