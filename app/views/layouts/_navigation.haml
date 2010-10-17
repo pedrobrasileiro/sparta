@@ -23,5 +23,5 @@
     %li= link_to 'Sign out', destroy_user_session_path, :remote => true, :class => 'sign-out'
 
   - else
-  %li.relative-it= link_to 'Sign up', new_user_registration_path, :remote => true, :class => 'add-project menu-popup menu-popup-window green'
-  %li.relative-it= link_to 'Sign in', new_user_session_path, :remote => true, :class => 'add-project menu-popup menu-popup-window'
+    %li.button-li.relative-it= link_to 'Sign up', new_user_registration_path, :remote => true, :class => 'add-project menu-popup menu-popup-window green'
+    %li.button-li.relative-it= link_to 'Sign in', new_user_session_path, :remote => true, :class => 'add-project menu-popup menu-popup-window'

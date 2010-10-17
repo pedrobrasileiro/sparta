@@ -289,7 +289,7 @@ $(function() {
 
   // Sign in / up / out
 
-  $('.sign-out').bind('ajax:success', function() {
+  $('#new_user, .sign-out').live('ajax:success', function() {
     window.location = '/';
   });
 });
