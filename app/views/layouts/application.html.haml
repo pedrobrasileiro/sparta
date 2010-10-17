@@ -19,7 +19,7 @@
           - else
             %li= link_to 'Add an new project', new_project_path, :class => 'add-project menu-popup'
 
-          - if @project
+          - if @project.id
             %li= link_to 'Tickets', '#'
             %li= link_to 'People', '#'
             %li= link_to 'Settings', edit_project_path(@project)
