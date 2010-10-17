@@ -5,4 +5,4 @@
     %p.head
       #{@comment.user.email},
       %span.time= content_tag(:abbr, I18n.l(@comment.created_at, :format => :short), :class => 'timeago', :title => @comment.created_at.iso8601)
-    %p= @comment.body
+    %p.content= @comment.body
