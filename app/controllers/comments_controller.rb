@@ -12,8 +12,8 @@ class CommentsController < InheritedResources::Base
   end
 
   def create
-    super do |format|
-      current_user.comments << resource
+    create! do |format|
+      current_user.comments << @comment
       format.js { render :template => 'comments/show', :layout => false }
     end
   end
