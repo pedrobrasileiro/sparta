@@ -22,7 +22,7 @@ private
   def init_statuses
     self.ticket_statuses.create([{
       :name  => 'New',
-      :color => 'white',
+      :color => 'gray',
       :close => false
     },{
       :name  => 'Resolved',
@@ -30,7 +30,7 @@ private
       :close => false
     },{
       :name  => 'Closed',
-      :color => 'gray',
+      :color => 'red',
       :close => true
     }])
     self.default_status = self.ticket_statuses.where("name = 'New'").first
