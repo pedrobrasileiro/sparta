@@ -7,12 +7,16 @@ body
   font-family: Helvetica, Arial
   background: #221F1D
 
+body#ui
+  background: white
+
 // Header
 
 #header
   background: white
   margin-top: 15px
   display: inline-block
+  height: 100px
   width: 100%
   background: #FAFBEE
 
@@ -36,19 +40,13 @@ body
       height: 172px
       display: block
 
-
-body#page #header
-  height: 100px
-
-body#ui #header
-  height: 49px
-
 body#ui #logo
   background-position: 0px -85px
   font-size: 25px
   height: 65px
-  a.ribbon
-    height: 85px
+
+body#ui #logo a.ribbon
+  height: 85px
 
 // Navigation
 
@@ -102,7 +100,7 @@ a.made-with-love
   background: white
   margin: 30px 20px
 
-.content-wrapper
+.content-wrappe
   padding: 10px 15px
 
 // Tickets
@@ -131,10 +129,6 @@ li.ticket
   &:hover, &.ui-selected
     .buttons
       display: inline-block
-    //background: #FEFFF7
-    //color: black
-    //.description
-      //color: black
 
   &.ui-selected
     background: #4E111D
@@ -192,16 +186,21 @@ li.ticket
   .main-column
     width: 100%
   .meta-column
-    margin-right: -300px
+    width: 450px
 
 .column-wrapper
-  padding-right: 20px
+  padding: 25px 20px 15px
 
 ul.tickets-actions
   overflow: hidden
-  margin: 0 0 20px 0
+  margin: 0 0 40px 0
   li
     float: right
+
+.meta-column
+  position: fixed
+  top: 0
+  right: 0
 
 // Promo
 
@@ -247,9 +246,9 @@ ul.tickets-actions
 
   .shortcut
     color: #5E5E5E
-    
+
 // Comments
 #new_comment
   textarea
     width: 250px
-    
+

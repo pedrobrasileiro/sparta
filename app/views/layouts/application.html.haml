@@ -1,9 +1,12 @@
 - content_for :content do
   .columns
     .column.main-column
+      #logo
+        = link_to '', root_path, :class => 'ribbon'
       .column-wrapper
         = yield
     .column.meta-column
-      Meta panel
+      .column-wrapper
+        Meta panel
 
 = render 'layouts/base'
