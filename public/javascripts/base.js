@@ -196,7 +196,7 @@ $(function() {
 
   $('ul.tickets-list').selectable({
     filter: 'li.ticket',
-    cancel: 'a.delete-ticket,input',
+    cancel: 'a.delete-ticket, a.edit-ticket',
 
     selected: function(event, ui) {
       var selected = $('.ticket.ui-selected');
@@ -303,5 +303,11 @@ $(function() {
     $(this).parents('.popup-window').remove();
 
     $('.tickets-list:first').append(data);
+  });
+
+  //
+
+  $('.edit-ticket').live('ajax:success', function(_, data) {
+    setMetapanelContent(data);
   });
 });

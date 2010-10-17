@@ -566,16 +566,20 @@ ul.tickets-actions
           width: 12px
           vertical-align: middle
 
+  #comments
+    img
+      width: 32px
+
+h4
+  font-size: 18px
+  color: #999
+  margin-bottom: 8px
+
 #comments
   margin-top: 20px
   float: left
   clear: both
   width: 100%
-
-  h4
-    font-size: 18px
-    color: #999
-    margin-bottom: 8px
 
   ul.comments
     overflow: hidden
@@ -600,25 +604,56 @@ ul.tickets-actions
       .time
         color: #CCC
 
-  form
-    img
-      width: 32px
-
-    fieldset.inputs
-      li
-        float: left
-
-  textarea
-    width: 390px
-    height: 50px
-    margin: 0 0 0 10px
-
-  li.commit
-    float: none
-    clear: both
-    padding: 3px 6px
-    margin: 10px 0 0 0
-    background: #DEDEDE
 
 .tickets-lists
   margin: 80px 0 0 0
+
+.meta-column
+  form
+    label
+      display: block
+      color: #414141
+      font-size: 14px
+      margin-bottom: 3px
+    li
+      margin: 0 0 10px 0 !important
+      float: none !important
+    li.commit
+      float: none
+      clear: both
+      padding: 3px 6px
+      margin: 10px 0 0 0
+      background: #DEDEDE
+    li.string, li.password
+      input
+        padding: 2px 3px
+        font-size: 15px
+        width: 300px
+    li.select, #ticket_tag_list_input
+      label
+        display: inline-block
+        width: 100px
+        text-align: right
+        margin-right: 10px
+      input
+        font-size: 13px
+        padding: 1px 2px
+        width: 329px
+
+  .formtastic.comment
+    width: 435px
+
+    fieldset.inputs
+      li
+        float: left !important
+
+    textarea
+      width: 390px !important
+      height: 50px
+      margin: 0 0 0 10px
+
+  .formtastic.ticket
+    textarea
+      height: 40px
+      width: 445px
+

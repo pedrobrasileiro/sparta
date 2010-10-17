@@ -10,5 +10,5 @@
       %span.assign(class="#{current_user == ticket.assigned_to ? 'its-you' : ''}")
         = link_to ticket.assigned_to.email, '#'
   %span.buttons
-    = link_to 'Edit', [@project, ticket], :class => 'edit-ticket'
+    = link_to 'Edit', edit_project_ticket_path(@project, ticket), :remote => true, :class => 'edit-ticket'
     = link_to image_tag('trash.gif'), [@project, ticket], :class => 'delete-ticket', :confirm => 'You are really want to delete this ticket?', :method => :delete, :remote => true
