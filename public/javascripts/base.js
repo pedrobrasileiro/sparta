@@ -108,8 +108,21 @@ $(function() {
         form.attr('action'),
         ids.replace(/ticket\[\]/g, 'ticket_ids[]') + '&' + update,
         function(data) {
-          console.log(data);
-        }
+          for(i = 0; i < data.tickets.length; i++) {
+            var ticket     = data.tickets[i],
+                ticketId   = '#' + ticket.match(/id="(ticket_\d+)"/)[1],
+                oldTicket  = $(ticketId),
+                isSelected = oldTicket.is('.ui-selected');
+
+            console.log(ticket);
+
+            oldTicket.replaceWith(ticket);
+            if(isSelected) $(ticketId).addClass('ui-selected');
+          }
+
+          clearMetaPanel();
+        },
+        'json'
       );
       return false;
     });

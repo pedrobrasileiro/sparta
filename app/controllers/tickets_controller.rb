@@ -62,7 +62,9 @@ class TicketsController < InheritedResources::Base
   end
 
   def bulk_update
-    Ticket.update_all(params[:ticket], ["id IN (?)", params[:ticket_ids]])
-    render :nothing => true
+    tickets = Ticket.update_all(params[:ticket], ["id IN (?)", params[:ticket_ids]])
+    render :json => {
+      :tickets => Ticket.find(params[:ticket_ids]).map { |ticket| render_to_string :partial => 'ticket', :locals => { :ticket => ticket } }
+    }
   end
 end
