@@ -13,7 +13,7 @@ $(function() {
     if( confirm('You really want to delete selected tickets?') ) {
       var selected = $('li.ticket.ui-selected');
       $.post(
-        '/projects/1/tickets/bulk_delete',
+        '/projects/' + projectId + '/tickets/bulk_delete',
         serializeObjects(selected),
         null,
         'json'
@@ -182,7 +182,7 @@ $(function() {
       var ul = $(this);
       setTimeout(function() {
         $.post(
-          '/projects/1/tickets/sort',
+          '/projects/' + projectId + '/tickets/sort',
           ul.sortable('serialize'),
           null,
           'json'
