@@ -8,11 +8,12 @@
 
 - if @tickets.class == Hash
   - if @tickets[:both]
-    %h3.tickets-header= @tickets[:both][0]
+    - unless @tickets[:both][1].empty?
+      %h3.tickets-header= @tickets[:both][0]
 
-    %ul.tickets-list
-      - @tickets[:both][1].each do |ticket|
-        = render ticket
+      %ul.tickets-list
+        - @tickets[:both][1].each do |ticket|
+          = render ticket
 
   - if @tickets[:other]
     - @tickets[:other].each do |ticket|

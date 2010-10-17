@@ -114,8 +114,6 @@ $(function() {
                 oldTicket  = $(ticketId),
                 isSelected = oldTicket.is('.ui-selected');
 
-            console.log(ticket);
-
             oldTicket.replaceWith(ticket);
             if(isSelected) $(ticketId).addClass('ui-selected');
           }
@@ -184,8 +182,7 @@ $(function() {
           if(event.keyCode == 27) {
 
             $('li.ticket', sortingHelper).each(function() {
-              var parent = $(this).data('parent-backup');
-              console.log(parent);
+              var parent = $(this).data('parent-backup');            
 
               if(
                   $('li.ticket:not(.ui-sortable-placeholder)', parent)
@@ -372,8 +369,6 @@ $(function() {
     var ticketId   = '#' + data.match(/id="(ticket_\d+)"/)[1],
         oldTicket  = $(ticketId),
         isSelected = oldTicket.is('.ui-selected');
-
-    console.log(isSelected);
 
     oldTicket.replaceWith(data);
     if(isSelected) $(ticketId).addClass('ui-selected');
