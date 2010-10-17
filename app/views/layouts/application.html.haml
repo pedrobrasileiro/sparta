@@ -4,22 +4,25 @@
       #logo
         = link_to '', root_path, :class => 'ribbon'
       %ul#navigation
-        - if current_user.projects.count > 0
-          - if current_user.projects.count == 1
-            %li= link_to current_user.projects.first.name, current_user.projects.first
-            %li= link_to 'Add an new project', new_project_path, :class => 'add-project menu-popup'
+        - if current_user
+          - if current_user.projects.count > 0
+            - if current_user.projects.count == 1
+              %li= link_to current_user.projects.first.name, current_user.projects.first
+              %li= link_to 'Add an new project', new_project_path, :class => 'add-project menu-popup'
+            - else
+              %li.drop-down
+                = link_to "#{@project ? @project.name : 'Select project'} #{image_tag('drop.gif')}".html_safe, '#', :class => 'select-project menu-popup'
+                %ul
+                  - current_user.projects.each do |project|
+                    %li= link_to project.name, project
+                  %li= link_to 'Add an new', new_project_path, :class => 'add-project'
           - else
-            %li.drop-down
-              = link_to "#{@project ? @project.name : 'Select project'} #{image_tag('drop.gif')}".html_safe, '#', :class => 'select-project'
-              %ul
-                - current_user.projects.each do |project|
-                  %li= link_to project.name, project
-                %li= link_to 'Add an new', new_project_path, :class => 'add-project'
-        - else
-          %li= link_to 'Add an new project', new_project_path, :class => 'add-project menu-popup'
-        %li= link_to 'Tickets', '#'
-        %li= link_to 'People', '#'
-        %li= link_to 'Settings', '#'
+            %li= link_to 'Add an new project', new_project_path, :class => 'add-project menu-popup'
+
+          - if @project
+            %li= link_to 'Tickets', '#'
+            %li= link_to 'People', '#'
+            %li= link_to 'Settings', '#'
 
       .column-wrapper
         = yield
