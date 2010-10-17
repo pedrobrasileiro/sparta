@@ -64,7 +64,6 @@ body#ui #logo a.ribbon
         @include border-bottom-left-radius(4px)
         position: absolute
         display: none
-        overflow: hidden
         background: #C1C1C1
         li
           display: block
@@ -79,7 +78,8 @@ body#ui #logo a.ribbon
             background: none
             display: block
             margin: 0
-            font-size: 14px
+            font-size: 16px
+            padding: 6px 15px
             &:hover
               background: #FBFCE0
             &.add-project
@@ -96,20 +96,53 @@ body#ui #logo a.ribbon
             a
               @include border-bottom-radius(4px)
       a
-        @include border-radius(4px)
-        text-decoration: none
-        display: inline-block
-        margin-top: -9px
-        background: #E1E1E1
-        padding: 6px 18px
-        font-size: 18px
-        img
-          margin-left: 2px
-          vertical-align: middle
 
-  .menu-popup
-    @include border-radius(4px)
-    background: blue
+.menu-popup
+  @include border-radius(6px)
+  text-decoration: none
+  display: inline-block
+  margin-top: -9px
+  background: #E1E1E1
+  padding: 6px 18px 6px 18px
+  font-size: 18px
+  &.green
+    background: #DAFB9F
+  img
+    margin-left: 2px
+    vertical-align: middle
+
+.popup-window
+  @include border-right-radius(6px)
+  @include border-bottom-left-radius(6px)
+
+  position: absolute
+
+  background: #E1E1E1
+  padding: 10px 15px
+  &.green
+    background: #DAFB9F
+
+  form
+    label
+      display: block
+      color: #737373
+      font-size: 14px
+      margin-bottom: 3px
+    li
+      margin: 0 0 10px 0 !important
+      float: none !important
+    fieldset.buttons
+      border-top: 1px solid #A6A6A6
+    li.commit
+      margin: 0 !important
+      border-top: 1px solid #F2F2F2
+      padding-top: 8px !important
+    li.string
+      input
+        padding: 2px 3px
+        font-size: 15px
+        width: 300px
+
 
 body#page #navigation
   margin: 35px 0 0 350px
@@ -156,7 +189,7 @@ a.made-with-love
   background: white
   margin: 30px 20px
 
-.content-wrappe
+.content-wrapper
   padding: 10px 15px
 
 // Tickets

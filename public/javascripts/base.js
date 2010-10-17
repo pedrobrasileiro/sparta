@@ -242,12 +242,15 @@ $(function() {
 
   $('.select-project').toggle(
     function() {
-      $(this).parent().find('ul').show().position({
-        of: $(this),
-        my: 'left top',
-        at: 'right top',
-        offset: '-5px 0'
-      });
+      $(this)
+        .parent()
+        .find('ul')
+        .show()
+        .css({
+          top: '0',
+          left: $(this).innerWidth(),
+          margin: '-' + ($.browser.webkit ? '9' : '7') + 'px 0 0 -5px'
+        });
 
       return false;
     },
@@ -257,4 +260,24 @@ $(function() {
       return false;
     }
   );
+
+  var popupWindow = $('<div class="popup-window"></div>');
+
+  $('.menu-popup.menu-popup-window').bind('ajax:success', function(_, data) {
+    popupWindow
+      .clone()
+      //.appendTo('body')
+      .ansertAfter($(this))
+      .addClass('green')
+      .append(data)
+      .css({
+        top: $(this).offset().top,
+        left: $(this).offset().left + $(this).innerWidth(),
+        margin: '0 0 0 -5px'
+      });
+  });
+
+  $('#new_project').live('ajax:success', function(_, data) {
+    window.location = data;
+  });
 });
