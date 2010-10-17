@@ -1,4 +1,4 @@
-<%= form_for(@ticket_type) do |f| %>
+<%= form_for([@project, @ticket_type]) do |f| %>
   <% if @ticket_type.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@ticket_type.errors.count, "error") %> prohibited this ticket_type from being saved:</h2>
