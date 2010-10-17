@@ -20,10 +20,10 @@
           - else
             %li.button-li.relative-it= link_to 'New project', new_project_path, :remote => true, :class => 'add-project menu-popup menu-popup-window green'
 
-          - if @project
+          - if @project && !@project.new_record?
             %li= link_to 'Tickets', @project
-            %li= link_to 'People', '#' #project_project_users_path(@project)
-            %li= link_to 'Settings', '#' # edit_project_path(@project)
+            %li= link_to 'People', project_project_users_path(@project)
+            %li= link_to 'Settings', edit_project_path(@project)
 
       .column-wrapper
         = yield
