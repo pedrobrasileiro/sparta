@@ -1,13 +1,7 @@
 #promo
-  .video
-    :erb
-      <object classid='clsid:d27cdb6e-ae6d-11cf-96b8-444553540000' codebase='http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,115,0' width='560' height='345'><param name='movie' value='http://screenr.com/Content/assets/screenr_1116090935.swf' /><param name='flashvars' value='i=119397' /><param name='allowFullScreen' value='true' /><embed src='http://screenr.com/Content/assets/screenr_1116090935.swf' flashvars='i=119397' allowFullScreen='true' width='560' height='345' pluginspage='http://www.macromedia.com/go/getflashplayer'></embed></object>
-
-  .description-block
-    %h2 This is Sparta.
-    %p In last 48 hours, we developed a great ticket tracker. This was made possible thanks to a lot of free and open source software: Linux / Ubuntu, Phusion Passenger Nginx PostgreSQL, Ruby, Ruby on Rails, jQuery, jQuery UI and a lot of gems and plugins. This is a labor of hundreds of people that you and use for free. It's a real miracle!
-    %p.accented #{link_to 'So we decide make Sparta open source', 'http://github.com/lovepanic/sparta'}. We hope it may help to someone make cool thing better and faster.
-    %p During this short time we managed to make a ticket / project / users manipulations, multiply ticket sorting, bulk edit on the fly, customizable ticket statuses (new, resolved etc) and ticket types (feature, bug).
-    %p In the future we will work on our project and will add lots of awesome features. In the near future we want to add hotkeys (some of hotkeys was work right now), syncing via sockets, milestones, filters and user roles.
-    %p= image_tag 'love_panic.jpg', :alt => '', :class => 'our-photo'
-    %h3 — #{link_to 'Sasha Koss', 'mailto:kossnocorp@gmail.com'} and #{link_to 'Edward Tsech', 'mailto:edtsech@gmail.com'}
+  .promo-columns
+    .first-column.title
+      .column-wrapper Short description
+    .second-column.fast-links
+      .column-wrapper
+        = link_to 'Source code on GitHub', 'http://github.com/lovepanic/sparta'
