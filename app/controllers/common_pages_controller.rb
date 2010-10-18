@@ -1,4 +1,6 @@
 class CommonPagesController < ApplicationController
+  authorize_resource :class => false
+
   def show
     method_name = params[:id]
     begin

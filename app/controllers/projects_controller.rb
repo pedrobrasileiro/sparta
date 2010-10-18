@@ -1,4 +1,6 @@
 class ProjectsController < InheritedResources::Base
+  load_and_authorize_resource
+
   actions :index, :new, :create, :edit, :update, :destroy
 
   respond_to :js

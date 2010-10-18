@@ -1,4 +1,6 @@
 class TicketsController < InheritedResources::Base
+  load_and_authorize_resource
+
   actions :index, :show, :new, :create, :edit, :update, :destroy
   belongs_to :project
 

@@ -1,18 +1,20 @@
 class ProjectUsersController < InheritedResources::Base
+  load_and_authorize_resource
+
   defaults :resource_class => User, :collection_name => 'users', :instance_name => 'user'
 
   belongs_to :project
   actions :index, :create, :destroy
 
   respond_to :js
-  
+
   def index
     @project = Project.find(params[:project_id])
     @user = @project.users.new
     index!
   end
 
-  def create        
+  def create
     @project = Project.find(params[:project_id])
     @project.users << User.find_by_email(params[:user][:email])
     @user = @project.users.last
