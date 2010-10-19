@@ -12,9 +12,9 @@ class ProjectsController < InheritedResources::Base
     end
   end
 
-  private
+private
 
   def begin_of_association_chain
-    current_user
+    #current_user
   end
 end
