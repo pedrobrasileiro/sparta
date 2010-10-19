@@ -1,8 +1,10 @@
 class TicketsController < InheritedResources::Base
-  load_and_authorize_resource
+  belongs_to :project
 
   actions :index, :show, :new, :create, :edit, :update, :destroy
-  belongs_to :project
+
+  load_and_authorize_resource :project
+  load_and_authorize_resource :ticket, :through => :project
 
   respond_to :js
 
