@@ -3,24 +3,20 @@ class Project < ActiveRecord::Base
   has_many :tickets, :dependent => :destroy
   has_many :ticket_statuses, :dependent => :destroy
   has_many :ticket_types, :dependent => :destroy
-  
+
   belongs_to :default_status, :class_name => "TicketStatus", :foreign_key => "default_status_id"
-  
+
   after_create :init_statuses, :init_types
-  
+
+  # Project owner
+  belongs_to :user
+
   def project_users
     users
   end
-  
-  def user
-  end
-    
-  def user=(email)
-    self.users << User.where('email = ?', email)
-  end
-  
-private 
-  
+
+private
+
   def init_statuses
     self.ticket_statuses.create([{
       :name  => 'New',
@@ -38,11 +34,11 @@ private
     self.default_status = self.ticket_statuses.where("name = 'New'").first
     self.save
   end
-  
+
   def init_types
     self.ticket_types.create([{
       :name  => 'Feature',
-      :color => 'green'      
+      :color => 'green'
     },{
       :name  => 'Bug',
       :color => 'red'
