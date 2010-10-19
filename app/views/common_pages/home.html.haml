@@ -1,8 +1,23 @@
-#promo
+#home
   .promo-columns
+
     .first-column.title
       .column-wrapper
         %h2 Sparta is free and open source ticket tracker which <span class="love">love</span> humans.
+
+        .screenshot
+          = image_tag 'screenshot.png'
+
     .second-column.fast-links
       .column-wrapper
-        = link_to "<span>Source code on</span> #{image_tag 'github.png'}".html_safe, 'http://github.com/lovepanic/sparta', :class => 'source-code'
+        %ul
+
+          %li.source-code= link_to "<span>Source code on</span> #{image_tag 'github.png'}".html_safe, 'http://github.com/lovepanic/sparta'
+          %li.or or
+          %li.archive= link_to "#{image_tag 'zip.png'} <span>Download as archive</span> ".html_safe, '#'
+
+          %li.menu.install= link_to 'Install instructions', '#'
+          %li.menu= link_to 'License', '#'
+          %li.menu= link_to 'Contributing', '#'
+          %li.menu= link_to 'Help and support', '#'
+          %li.menu= link_to 'Our team', '#'
