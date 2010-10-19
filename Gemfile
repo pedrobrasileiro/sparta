@@ -8,7 +8,7 @@ gem 'rails', '3.0.1'
 gem 'pg'
 
 gem 'devise'
-gem 'cancan'
+gem 'cancan', '1.4.0'
 
 #gem 'thinking-sphinx', '2.0.0.rc2', :require => 'thinking_sphinx'
 
