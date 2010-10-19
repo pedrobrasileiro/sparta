@@ -1,7 +1,8 @@
 #promo
   .promo-columns
     .first-column.title
-      .column-wrapper Short description
+      .column-wrapper
+        %h2 Sparta is free and open source ticket tracker which <span class="love">love</span> humans.
     .second-column.fast-links
       .column-wrapper
-        = link_to 'Source code on GitHub', 'http://github.com/lovepanic/sparta'
+        = link_to "<span>Source code on</span> #{image_tag 'github.png'}".html_safe, 'http://github.com/lovepanic/sparta', :class => 'source-code'
