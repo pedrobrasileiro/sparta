@@ -38,7 +38,11 @@ class Ability
       ##
       # Tickets abilities
       ##
-      can :read, Ticket
+
+      # User can do anything with tickets in project with access
+      # TODO: Add roles
+      # TODO: Fix bug with bulk actions
+      can :manage, Ticket
     end
   end
 end

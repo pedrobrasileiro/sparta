@@ -6,16 +6,16 @@ class Ticket < ActiveRecord::Base
   belongs_to :assigned_to, :class_name => 'User', :foreign_key => 'assigned_to_id'
   belongs_to :reporter, :class_name => 'User', :foreign_key => 'reporter_id'
   before_create :numbering_ticket
-  
+
   after_create :set_default_status
   after_create :close_if_status_close
-  
+
   after_update :close_if_status_close
-  
+
   default_scope :order => '"position" asc', :conditions => { :closed => false }
-  
+
   acts_as_taggable
-  
+
   #validates :description, :presence => true
 
   def self.order ids
@@ -23,7 +23,7 @@ class Ticket < ActiveRecord::Base
       ['"position" = find_in_set("id"::text, ?)', ids.join(',')],
       { :id => ids }
     )
-  end  
+  end
 
 private
 
@@ -34,14 +34,14 @@ private
       1
     end
   end
-  
+
   def set_default_status
     unless self.status
       self.status = project.default_status
       save
     end
   end
-  
+
   def close_if_status_close
     if !self.closed && self.status.close?
       self.closed = true
