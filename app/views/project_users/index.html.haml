@@ -6,7 +6,7 @@
 
   %h4 Add user
 
-  - semantic_form_for [@project, @user], :url => project_project_users_path, :html => { :class => 'add-user-form' }, :remote => true do |f|
-    - f.inputs do
+  = semantic_form_for [@project, @user], :url => project_project_users_path, :html => { :class => 'add-user-form' }, :remote => true do |f|
+    = f.inputs do
       = f.input :email, :label => 'User emal:'
     = f.submit 'Add user to project'

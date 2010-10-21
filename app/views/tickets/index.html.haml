@@ -47,12 +47,12 @@
 #ticket-template
   %p Edit Tickets
   %br
-  - semantic_form_for [@project, @ticket], :url => bulk_update_project_tickets_path  do |f|
-    - f.inputs do
+  = semantic_form_for [@project, @ticket], :url => bulk_update_project_tickets_path  do |f|
+    = f.inputs do
       -#= f.input :tag_list
       = f.input :assigned_to, :collection => @project.users.map {|user| [user.email, user.id]}
       = f.input :status, :collection => @project.ticket_statuses.map {|status| [status.name, status.id]}
       = f.input :type, :collection => @project.ticket_types.map {|type| [type.name, type.id]}
-    - f.buttons do
+    = f.buttons do
       %li{:class => 'commit'}= f.submit 'Update Tickets'
   
