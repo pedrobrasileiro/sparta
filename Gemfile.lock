@@ -96,6 +96,7 @@ GEM
       rspec-expectations (~> 2.0.1)
     rspec-rails (2.0.1)
       rspec (~> 2.0.0)
+    shoulda (2.11.3)
     thor (0.14.2)
     treetop (1.4.8)
       polyglot (>= 0.3.1)
@@ -120,3 +121,4 @@ DEPENDENCIES
   pg
   rails (= 3.0.1)
   rspec-rails (>= 2.0.0)
+  shoulda

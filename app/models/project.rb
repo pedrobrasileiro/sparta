@@ -8,10 +8,10 @@ class Project < ActiveRecord::Base
   
   after_create :init_statuses, :init_types
   
-  def project_users
-    users
-  end
+  validates :name, :presence => true
   
+  alias :project_users :users
+    
   def user
   end
     

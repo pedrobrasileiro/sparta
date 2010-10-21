@@ -44,5 +44,6 @@ gem 'RedCloth', :require => 'redcloth'
 group :development, :test do
   # gem 'factory_girl'
   # gem 'mocha', :require => nil # This is important. Otherwise you won't be able to mock finders
+  gem "shoulda"  
   gem "rspec-rails", ">= 2.0.0"
 end
