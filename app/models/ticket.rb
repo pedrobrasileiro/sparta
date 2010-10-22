@@ -5,6 +5,7 @@ class Ticket < ActiveRecord::Base
   belongs_to :type, :class_name => 'TicketType', :foreign_key => 'type_id'
   belongs_to :assigned_to, :class_name => 'User', :foreign_key => 'assigned_to_id'
   belongs_to :reporter, :class_name => 'User', :foreign_key => 'reporter_id'
+  
   before_create :numbering_ticket
 
   after_create :set_default_status
