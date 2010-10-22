@@ -35,6 +35,11 @@ class Ability
       # TODO: Add multiply project owners
       can :update, Project, :user => current_user
 
+      #
+      can :manage, :project_user do |ability|
+        ability.invert[:project_user].user.id == current_user.id
+      end
+
       ##
       # Tickets abilities
       ##

@@ -1,10 +1,11 @@
 class ProjectUsersController < InheritedResources::Base
-  load_and_authorize_resource
-
   defaults :resource_class => User, :collection_name => 'users', :instance_name => 'user'
 
   belongs_to :project
   actions :index, :create, :destroy
+
+  load_and_authorize_resource :project
+  authorize_resource :project_user, :through => :project, :class => false
 
   respond_to :js
 
