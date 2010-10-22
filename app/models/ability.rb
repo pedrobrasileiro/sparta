@@ -40,6 +40,11 @@ class Ability
         ability.invert[:project_user].user.id == current_user.id
       end
 
+      #
+      can :manage, TicketStatus do |status|
+        status.project.user.id == current_user.id
+      end
+
       ##
       # Tickets abilities
       ##
