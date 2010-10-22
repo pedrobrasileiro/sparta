@@ -44,8 +44,8 @@ gem 'RedCloth', :require => 'redcloth'
 # put test-only gems in this group so their generators
 # and rake tasks are available in development mode:
 group :development, :test do
-  # gem 'factory_girl'
-  # gem 'mocha', :require => nil # This is important. Otherwise you won't be able to mock finders
-  gem "shoulda"  
-  gem "rspec-rails", ">= 2.0.0"
+  gem 'shoulda'
+  gem 'rspec-rails', '>= 2.0.0'
+  gem 'factory_girl_rails', '1.0.0'
+  gem 'faker'
 end
