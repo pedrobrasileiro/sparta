@@ -43,6 +43,9 @@ class Ability
       # TODO: Add roles
       # TODO: Fix bug with bulk actions
       can :manage, Ticket
+
+      # User can do anything with comments to tickets with access
+      can :manage, Comment
     end
   end
 end

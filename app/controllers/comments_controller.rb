@@ -1,5 +1,6 @@
 class CommentsController < InheritedResources::Base
-  load_and_authorize_resource
+  load_and_authorize_resource :ticket
+  load_and_authorize_resource :comment, :through => :project
 
   actions :index, :create
   nested_belongs_to :project, :ticket
