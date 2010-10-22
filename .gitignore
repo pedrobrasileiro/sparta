@@ -5,4 +5,5 @@ log/*.log
 tmp/**/*
 config/database.yml
 public/stylesheets/master.css
+public/stylesheets/ui.css
 public/stylesheets/common_pages.css

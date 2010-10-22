@@ -1,16 +1,34 @@
 #home
+  .ribbon
+
   .promo-columns
 
     .first-column.title
       .column-wrapper
+
         %h2 Sparta is free and open source ticket tracker which <span class="love">love</span> humans.
 
         .screenshot
           = image_tag 'screenshot.png'
 
-    .second-column.fast-links
+    .second-column
       .column-wrapper
-        %ul
+
+        .user-block
+          .user-block-wrapper
+            - if current_user
+              .authorized
+                .avatar= image_tag(current_user.gravatar_url.html_safe, :alt => '')
+                .asd
+                  You signed in as #{current_user.email}. #{link_to 'Sign out', '#'}?
+
+            - else
+              .unauthorized
+                %ul
+                  %li= link_to 'Sign up', new_user_registration_path
+                  %li= link_to 'Sign in', new_user_session_path
+
+        %ul.fast-links
 
           %li.source-code= link_to "<span>Source code on</span> #{image_tag 'github.png'}".html_safe, 'http://github.com/lovepanic/sparta'
           %li.or or
@@ -21,3 +39,5 @@
           %li.menu= link_to 'Contributing', '#'
           %li.menu= link_to 'Help and support', '#'
           %li.menu= link_to 'Our team', '#'
+
+= render 'layouts/base'
