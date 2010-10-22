@@ -4,16 +4,18 @@ class Project < ActiveRecord::Base
   has_many :ticket_statuses, :dependent => :destroy
   has_many :ticket_types, :dependent => :destroy
 
-  belongs_to :default_status, :class_name => "TicketStatus", :foreign_key => "default_status_id"
+  belongs_to \
+    :default_status,
+    :class_name => 'TicketStatus',
+    :foreign_key => 'default_status_id'
 
   after_create :init_statuses, :init_types
+  validates :name, :presence => true
+
+  alias :project_users :users
 
   # Project owner
   belongs_to :user
-
-  def project_users
-    users
-  end
 
 private
 
