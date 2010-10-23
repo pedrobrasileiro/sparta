@@ -14,7 +14,9 @@ describe CommentsController do
                      :project_id => @ticket.project_id, 
                      :ticket_id  => @ticket.id  }.should raise_exception(CanCan::AccessDenied)
       end
+    end
       
+    describe '#create' do  
       it 'user should have not access to comments create' do
         lambda { post :create, 
                       :project_id => @ticket.project_id, 
