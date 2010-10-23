@@ -44,8 +44,13 @@ gem 'RedCloth', :require => 'redcloth'
 # put test-only gems in this group so their generators
 # and rake tasks are available in development mode:
 group :development, :test do
-  gem 'shoulda'
-  gem 'rspec-rails', '>= 2.0.0'
-  gem 'factory_girl_rails', '1.0.0'
+  gem 'capybara'
+  gem 'launchy'
+  gem 'database_cleaner'
+  gem 'cucumber-rails'
   gem 'faker'
+  gem 'shoulda', '2.11.3'
+  gem 'rspec-rails', '2.0.1'
+  gem 'factory_girl', :git => 'http://github.com/thoughtbot/factory_girl.git'
+  gem 'cucumber-rails'
 end

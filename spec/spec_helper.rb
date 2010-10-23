@@ -2,7 +2,7 @@
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
-require 'factory_girl_rails'
+require 'factory_girl'
 require 'faker'
 require 'cancan/matchers'
 
@@ -31,5 +31,5 @@ RSpec.configure do |config|
   config.extend ControllerMacros, :type => :controller
 
   # Load factories
-  #Dir["#{File.dirname(__FILE__)}/factories/*.rb"].each { |file| require file }
+  Dir["#{File.dirname(__FILE__)}/factories/*.rb"].each { |file| require file }
 end
