@@ -13,7 +13,7 @@ class Ability
     can :read, :common_page
 
     # ... view open projects
-    can :read, Project do |project|
+    can :show, Project do |project|
       project.open?
     end
 
