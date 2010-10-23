@@ -5,7 +5,6 @@ class ProjectsController < InheritedResources::Base
 
   def create
     create! do |format|
-      current_user.projects << @project
       format.js { render :text => project_tickets_path(@project) }
     end
   end

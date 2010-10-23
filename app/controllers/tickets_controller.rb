@@ -1,18 +1,24 @@
+# Tickets controller
 class TicketsController < InheritedResources::Base
+
+  # Inherited resources methods
+
   belongs_to :project
 
-  actions :index, :show, :new, :create, :edit, :update, :destroy
+  respond_to :js
+
+  # Abilities
 
   load_and_authorize_resource :project
   load_and_authorize_resource :ticket, :through => :project
 
-  respond_to :js
-
+  # Index action, show list of all active tickets
   def index
     @project = Project.find(params[:project_id])
     @ticket = @project.tickets.new
 
     @tags = Ticket.tag_counts_on(:tags)
+
     if params[:tags]
       @tickets = {}
       @tickets[:both] = [params[:tags].gsub(', ', ',').split(',').map(&:capitalize).join(', '), @project.tickets.tagged_with(params[:tags])]
