@@ -53,3 +53,7 @@ group :development, :test do
   gem 'factory_girl', :git => 'http://github.com/thoughtbot/factory_girl.git'
   gem 'cucumber-rails'
 end
+
+group :test do
+  gem 'cover_me', '>= 1.0.0.rc2'
+end

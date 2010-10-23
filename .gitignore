@@ -7,3 +7,5 @@ config/database.yml
 public/stylesheets/ui.css
 public/stylesheets/master.css
 test/*
+coverage.data
+coverage/*
