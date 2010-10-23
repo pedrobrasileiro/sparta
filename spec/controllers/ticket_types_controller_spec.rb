@@ -42,23 +42,23 @@ describe TicketStatusesController do
     end
     
     # describe '#create' do
-    #   it "user should have access to add new ticket status" do
+    #   it "user should have access to add new ticket type" do
     #     post :create,
     #          :project_id    => @project.id,
-    #          :ticket_status => Factory.attributes_for(:ticket_status)
+    #          :ticket_type   => Factory.attributes_for(:ticket_type)
     #     
-    #     response.should redirect_to :index
+    #     response.should redirect_to(:index)
     #   end
     # end
     # 
     # describe '#update' do
-    #   it "user should have access to update ticket status" do
-    #     ticket_status = Factory(:ticket_status)
-    #     @project.ticket_statuses << ticket_status
+    #   it "user should have access to update ticket type" do
+    #     ticket_type = Factory(:ticket_type)
+    #     @project.ticket_types << ticket_type
     #     put :update,
     #         :project_id    => @project.id,
-    #         :id            => ticket_status,
-    #         :ticket_status => ticket_status
+    #         :id            => ticket_type,
+    #         :ticket_type   => ticket_type
     #            
     #     response.should redirect_to :index
     #   end
