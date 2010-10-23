@@ -17,7 +17,7 @@ describe Project do
   
   context "that was created" do 
     before :each do
-      @project = Project.create :name => 'Sparta'
+      @project = Factory(:project)
     end
     
     it "should have default statuses" do

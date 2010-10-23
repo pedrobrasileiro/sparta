@@ -9,9 +9,9 @@ class Ticket < ActiveRecord::Base
   before_create :numbering_ticket
 
   after_create :set_default_status
-  after_create :close_if_status_close
+  after_create :close_if_status_closed
 
-  after_update :close_if_status_close
+  after_update :close_if_status_closed
 
   default_scope :order => '"position" asc', :conditions => { :closed => false }
 
@@ -43,7 +43,7 @@ private
     end
   end
 
-  def close_if_status_close
+  def close_if_status_closed
     if !self.closed && self.status.close?
       self.closed = true
       save
