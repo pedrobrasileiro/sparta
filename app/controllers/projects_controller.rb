@@ -1,6 +1,4 @@
 class ProjectsController < InheritedResources::Base
-  actions :index, :new, :create, :edit, :update, :destroy
-
   load_and_authorize_resource
 
   respond_to :js
@@ -15,6 +13,6 @@ class ProjectsController < InheritedResources::Base
 private
 
   def begin_of_association_chain
-    #current_user
+    current_user
   end
 end
