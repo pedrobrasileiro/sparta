@@ -17,8 +17,8 @@ class ProjectUsersController < InheritedResources::Base
 
   def create
     @project = Project.find(params[:project_id])
-    @project.users << User.find_by_email(params[:user][:email])
-    @user = @project.users.last
+    @user = User.find_by_email(params[:user][:email])
+    @project.users << @user
     create! { |format| format.js { render :partial => 'user', :locals => { :user => @user } } }
   end
 
