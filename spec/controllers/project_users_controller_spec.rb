@@ -2,12 +2,12 @@ require 'spec_helper'
 
 describe ProjectUsersController do
   include Devise::TestHelpers
-  
-  before :each do
-    @project = Factory(:project)
-  end
-  
+    
   context 'unauthorized user' do
+    before :each do
+      @project = Factory(:project)
+    end
+    
     describe '#index' do
       it 'user should have no access to project users index' do
         lambda { get :index, 
@@ -35,24 +35,39 @@ describe ProjectUsersController do
   context 'authorized user' do
     sign_in_user
     
-    # describe '#index' do
-    #   it 'user should have access to project users index' do
-    #     get :index,
-    #         :project_id => @project.id
-    #     assigns[:user].project_id.should eql 1  
-    #     response.status.should eql 200
-    #   end
-    # end
-    # 
-    # describe '#create' do
-    #   it "user should have access to create new comment" do
-    #     post :create,
-    #          :project_id => @ticket.project_id,
-    #          :ticket_id  => @ticket.id,
-    #          :comment    => Factory.attributes_for(:comment)
-    #          
-    #     @user.comments.count.should eql 1
-    #   end
-    # end
+    before do
+      @project = Factory(:project, :user => @user)
+    end
+    
+    describe '#index' do
+      it 'user should have access to project users index' do
+        get :index,
+            :project_id => @project.id
+        response.status.should eql 200
+      end
+    end
+    
+    describe '#create' do
+      it "user should have access to add new user to project" do
+        @user = Factory(:user, :email => 'user@example.com')
+        post :create,
+             :project_id => @project.id,
+             :user       => @user
+        
+        @project.users.should include @user
+      end
+    end
+    
+    describe '#destroy' do
+      it "user should have access to delete user from project" do
+        user = Factory(:user)
+        @project.users << user
+        delete :destroy,
+               :project_id => @project.id,
+               :id       => user
+               
+        @project.users(true).should_not include user
+      end
+    end
   end  
 end
