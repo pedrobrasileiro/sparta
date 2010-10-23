@@ -1,7 +1,8 @@
 module ControllerMacros
   def sign_in_user
     before do
-      sign_in Factory(:user)
+      @user = Factory(:user)
+      sign_in @user
     end
   end
 end

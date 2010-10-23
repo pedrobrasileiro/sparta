@@ -17,12 +17,32 @@ describe ProjectsController do
     describe '#index' do
       it 'user should have access to projects index' do
         get :index
-        response.status.should == 200
+        response.status.should eql 200
       end
 
       it 'should assign user projects' do
+        @user.projects << [Factory(:project), Factory(:project)]
         get :index
-        assigns[:projects].should == controller.current_user.projects
+        assigns[:projects].should eq controller.current_user.projects
+      end
+    end
+
+    describe '#new' do
+      it 'should assign new project' do
+        get :new
+        assigns[:project].should_not be_nil
+      end
+
+      it 'should assign new record of project' do
+        get :new
+        assigns[:project].new_record?.should be_true
+      end
+    end
+
+    describe '#create' do
+      it 'should create project' do
+        post :create, :project => { :name => 'Unique name' }
+        Project.find_by_name('Unique name').should_not be_nil
       end
     end
   end
