@@ -9,13 +9,18 @@ class Project < ActiveRecord::Base
     :class_name => 'TicketStatus',
     :foreign_key => 'default_status_id'
 
-  after_create :init_statuses, :init_types
+  after_create \
+    :create_association_with_author,
+    :init_statuses,
+    :init_types
+
   validates :name, :presence => true
 
   alias :project_users :users
 
   # Project owner
   belongs_to :user
+  alias :owner :user
 
 private
 
@@ -48,5 +53,9 @@ private
       :name  => 'Chore',
       :color => 'orange'
     }])
+  end
+
+  def create_association_with_author
+    self.owner.projects << self
   end
 end
