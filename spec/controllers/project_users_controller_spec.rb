@@ -35,7 +35,7 @@ describe ProjectUsersController do
   context 'authorized user' do
     sign_in_user
     
-    before do
+    before :each do
       @project = Factory(:project, :user => @user)
     end
     
