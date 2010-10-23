@@ -11,6 +11,7 @@ describe Ticket do
   end
   
   it "should autoincrement number of new ticket" do
+    Ticket.destroy_all
     3.times do 
       Factory(:ticket)
     end
