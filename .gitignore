@@ -5,6 +5,7 @@ log/*.log
 tmp/**/*
 config/database.yml
 public/stylesheets/ui.css
+public/stylesheets/common_pages.css
 public/stylesheets/master.css
 test/*
 coverage.data
