@@ -33,7 +33,7 @@ class TicketsController < InheritedResources::Base
   def show
     super do |format|
       @comments = @ticket.comments
-      @comment = Comment.new
+      @comment = @ticket.comments.new
       format.html do
         render :layout => false
       end

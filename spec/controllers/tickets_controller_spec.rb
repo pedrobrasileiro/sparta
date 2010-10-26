@@ -37,6 +37,18 @@ describe TicketsController do
 
       end
     end
+    
+    ##
+    # show action
+    ##
+    describe '#show' do
+      it "should has new comment with ticket id and render show template" do
+        ticket = Factory(:ticket, :project_id => @project.id)
+        get :show, :project_id => @project.id, :id => ticket
+        assigns[:comment].ticket.id.should == ticket.id
+        response.should render_template 'tickets/show', :layout => false        
+      end
+    end    
 
     ##
     # new action
